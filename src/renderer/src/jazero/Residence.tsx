@@ -6,7 +6,7 @@ export  default function Residence(): React.ReactElement {
   return (
     <div>
       <img src={residenceImage} alt="Residence"
-        className="h-full absolute right-16"
+        className="h-full absolute right-16 drop-shadow-2xl"
       />
       <ResidenceModule top={120} right={470} />
       <ResidenceModule top={465} right={470} />
