@@ -1,20 +1,34 @@
-import { useContext, useEffect } from 'react'
-import { ResidenceContext } from './contexts/ResidenceContext'
-import Jazero from './jazero/Jazero'
+import { useContext, useEffect } from "react";
+import { ResidenceContext } from "./contexts/ResidenceContext";
+import Jezero from "./jezero/Jezero";
+import { ipcRenderer } from "electron";
 
 export default function App(): React.JSX.Element {
-
-  // Initialize IPC handle
-  const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
   
-  const residenceContext = useContext(ResidenceContext)
-
+  const residenceContext = useContext(ResidenceContext);
+  
   useEffect(() => {
-    ipcHandle()
-  }, [])
 
-  return (
-      <Jazero />
-  )
+    async function getBinTrashData() {
+      try {
+        const smartBins = await ipcRenderer.invoke("getSmartBins");
+        const trashItems = await ipcRenderer.invoke("getTrashItems");
+        residenceContext?.setSmartBins(smartBins);
+        residenceContext?.setTrashItems(trashItems);
+      } catch (err) {
+        console.error("Failed to fetch bin/trash data:", err);
+      }
+    };
 
+    getBinTrashData();
+    
+  }, [residenceContext]);
+
+  if (!residenceContext) {
+    return <div>Loading...</div>;
+  }
+
+  // return (residenceContext.selectedScene === "Jezero" ? <Jezero /> : <div>Loading...</div>);
+  return <Jezero />;
+  
 }

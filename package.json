@@ -20,7 +20,9 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.2",
     "@electron-toolkit/utils": "^4.0.0",
-    "animejs": "^4.2.0"
+    "@webcoader/jsonfiledb": "^1.0.2",
+    "animejs": "^4.2.0",
+    "mongodb": "^6.20.0"
   },
   "devDependencies": {
     "@electron-toolkit/tsconfig": "^2.0.0",
