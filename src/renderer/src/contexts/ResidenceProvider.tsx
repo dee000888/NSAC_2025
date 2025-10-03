@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ResidenceContext } from "./ResidenceContext";
-import { HabitatModule, MonthlySummery, SmartBin, TrashItem } from "@renderer/lib/types";
+import { HabitatModuleType, MonthlySummery, SmartBin, TrashItem } from "@renderer/lib/types";
 
 export default function ResidenceProvider({
   children,
@@ -8,7 +8,7 @@ export default function ResidenceProvider({
   children: React.ReactNode;
 }): React.JSX.Element {
     
-  const [selectedScene, setSelectedScene] = useState<"MainMenu" | "Jezero" | HabitatModule | null>(null);
+  const [selectedScene, setSelectedScene] = useState<"MainMenu" | "Jezero" | HabitatModuleType | null>("Jezero");
   const [smartBins, setSmartBins] = useState<SmartBin[]>([]);
   const [trashItems, setTrashItems] = useState<TrashItem[]>([]);
   const [monthlySummery, setMonthlySummery] = useState<MonthlySummery[]>([]);

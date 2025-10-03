@@ -1,29 +1,33 @@
-export type HabitatModule = "LivingSpaceModule" |
-  "StorageModule" |
-  "SurgicalModule" |
-  "LabModule" |
-  "RecyclingModule" |
-  "PlantationModule";
-  
-export type SmartBinType = "INDOOR" |
-  "OUTDOOR" |
-  "INSTATION";
+export enum HabitatModuleType {
+  LivingSpaceModule = "LivingSpaceModule",
+  StorageModule = "StorageModule",
+  SurgicalModule = "SurgicalModule",
+  LabModule = "LabModule",
+  RecyclingModule = "RecyclingModule",
+  PlantationModule = "PlantationModule"
+}
+
+export enum SmartBinType {
+  INDOOR = "INDOOR",
+  OUTDOOR = "OUTDOOR",
+  INSTATION = "INSTATION"
+}
 
 export type SmartBin = {
   binId: string;
-  moduleName: HabitatModule | null;
+  moduleName: HabitatModuleType | null;
   binType: SmartBinType;
-  totalWeight: number;
-  filledWeight: number;
   filledPercentage: number;
 }
 
-export type TrashCategory = "FABRIC" |
-  "PLASTIC" |
-  "GLASS" |
-  "METAL" |
-  "PAPER" |
-  "COMPOSITE";
+export enum TrashCategory {
+  FABRIC = "FABRIC",
+  PLASTIC = "PLASTIC",
+  GLASS = "GLASS",
+  METAL = "METAL",
+  PAPER = "PAPER",
+  COMPOSITE = "COMPOSITE"
+}
 
 export type TrashItem = {
   trashId: string;

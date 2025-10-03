@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { animate } from "animejs";
 
-type ResidenceModuleProps = {
+type HabitatModuleProps = {
   top: number;
   right: number;
   onClick: () => void;
@@ -9,7 +9,7 @@ type ResidenceModuleProps = {
   onLeave: () => void;
 };
 
-export default function ResidenceModule(props: ResidenceModuleProps): React.ReactElement {
+export default function HabitatModule(props: HabitatModuleProps): React.ReactElement {
   
   const [hovering, setHovering] = useState(false);
   const ringRef = useRef<HTMLDivElement>(null);
@@ -28,7 +28,7 @@ export default function ResidenceModule(props: ResidenceModuleProps): React.Reac
 
   return (
     <div
-      className="absolute w-32 h-32 inline-block hover:cursor-pointer"
+      className="w-36 h-36 hover:cursor-pointer absolute"
       style={{ top: `${top}px`, right: `${right}px` }}
       onClick={onClick}
       onMouseEnter={() => {
@@ -40,13 +40,13 @@ export default function ResidenceModule(props: ResidenceModuleProps): React.Reac
         onLeave();
       }}
     >
-      {/* Rotating dashed ring */}
       {hovering && (
         <div
           ref={ringRef}
-          className="absolute w-32 h-32 border-4 border-dashed border-blue-500 rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+          className="w-full h-full border-4 border-dashed border-blue-500 rounded-full pointer-events-none"
         />
       )}
     </div>
+
   );
 }

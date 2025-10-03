@@ -1,4 +1,6 @@
-export const trashData = [
+import {TrashItem} from "../renderer/src/lib/types"
+
+export const trashData: TrashItem[] = [
   {
     "trashId": "trash_001",
     "binId": "bin_LivingSpaceModule_1",

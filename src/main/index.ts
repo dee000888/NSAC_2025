@@ -1,4 +1,4 @@
-import { app, shell, BrowserWindow, ipcMain } from "electron";
+import { app, shell, BrowserWindow } from "electron";
 import { join } from "path";
 import { electronApp, optimizer, is } from "@electron-toolkit/utils";
 import registerdbHandlers from "../database/dbHandlers";
@@ -52,8 +52,10 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window);
   });
   
+  // Register database handlers
   registerdbHandlers();
-
+  
+  // Main window
   createWindow();
 
   app.on("activate", function () {

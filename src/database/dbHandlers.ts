@@ -1,18 +1,23 @@
 import { ipcMain } from "electron";
 import { connectDB } from "./database"
 
-type Collections = "smartbin" | "trashitem";
+type DbCollections = "smartbin" | "trashitem";
 
 export default function registerDbHandlers() {
   
-  ipcMain.handle("getSmartBins", async (_event) => {
+  ipcMain.handle("getSmartBins", async (_event, moduleName) => {
     const db = await connectDB();
-    return db.collection("smartbin" as Collections).find({}).toArray();
+    const smartBins = db.collection("smartbin" as DbCollections)
+      .find(
+        { moduleName: moduleName },
+        { projection: { _id: 0 } }
+      )
+    return smartBins;
   });
 
-  ipcMain.handle("getTrashItems" as Collections, async (_event) => {
+  ipcMain.handle("getTrashItems" as DbCollections, async (_event) => {
     const db = await connectDB();
-    return await db.collection("trashitem" as Collections).find({}).toArray();
+    return db.collection("trashitem" as DbCollections).find({}).toArray();
   });
   
 }
