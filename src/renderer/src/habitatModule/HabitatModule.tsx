@@ -2,120 +2,154 @@ import { useContext, useEffect, useState } from "react";
 import moduleImage from "../assets/images/(modules)/circular-module_1-Photoroom.png";
 import { ResidenceContext } from "@renderer/contexts/ResidenceContext";
 import { HabitatModuleType, SmartBin } from "@renderer/lib/types";
+import SmartBinItem from "./SmartBinItem";
 
 export default function HabitatModule({ moduleName }: { moduleName: HabitatModuleType }): React.ReactElement {
   
   const residenceContext = useContext(ResidenceContext);
-  const [activeTab, setActiveTab] = useState<"stats" | "second">("stats");
+
+  async function getBinData() {
+    try {
+      const smartBins: SmartBin[] = await window.electron.ipcRenderer.invoke("getSmartBins", moduleName);
+      residenceContext?.setSmartBins(smartBins);
+    } catch (err) {
+      console.error("Failed to fetch bin data:", err);
+    }
+  }
 
   useEffect(() => {
-    async function getBinData() {
-      try {
-        const smartBins: SmartBin[] = await window.electron.ipcRenderer.invoke("getSmartBins", moduleName);
-        residenceContext?.setSmartBins(smartBins);
-        alert(smartBins)
-      } catch (err) {
-        console.error("Failed to fetch bin data:", err);
-      }
-    }
     getBinData();
-  }, [residenceContext, moduleName]);
+  }, []);
+
+  const [selectedBinId, setSelectedBinId] = useState<string | null>(null);
+
+  async function handleSelectBin(bin: SmartBin) {
+    try {
+      setSelectedBinId(bin.binId);
+      const items = await window.electron.ipcRenderer.invoke("getTrashItemsByBin", bin.binId);
+      residenceContext?.setTrashItems(items);
+    } catch (err) {
+      console.error("Failed to load trash items:", err);
+    }
+  }
 
   if (!residenceContext) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div className="w-full h-screen bg-red-900 flex relative">
-      
-      {/* Top-left header */}
-      <div className="absolute top-4 left-4 flex items-center space-x-3">
-        <button
-          onClick={() => residenceContext.setSelectedScene("Jezero")}
-          className="p-2 bg-white/80 rounded-md hover:bg-white text-black"
-        >
-          ←
-        </button>
-        <h1 className="text-xl font-bold text-white">{moduleName}</h1>
-      </div>
+    <div className="w-full h-screen bg-red-900 flex relative p-8 gap-2">
 
-      {/* Left Sidebar with Tabs */}
-      <div className="w-1/4 h-full bg-gray-800 text-white p-4 flex flex-col mt-8">
-        <div className="flex space-x-4 border-b border-gray-600 mb-4">
+      {/* Module Info */}
+      <div className="w-1/3 h-full bg-gray-800 text-white p-6 flex flex-col rounded-md">
+        
+        {/* Module Name */}
+        <h2 className="text-2xl font-bold mb-4 flex gap-4">
           <button
-            onClick={() => setActiveTab("stats")}
-            className={`px-3 py-2 ${
-              activeTab === "stats" ? "border-b-2 border-white" : ""
-            }`}
+            onClick={() => residenceContext.setSelectedScene("Jezero")}
+            className="p-1 pl-2 pr-2 bg-white/80 rounded-md hover:bg-white text-black"
           >
-            Bin Statistics
+            ←
           </button>
-          <button
-            onClick={() => setActiveTab("second")}
-            className={`px-3 py-2 ${
-              activeTab === "second" ? "border-b-2 border-white" : ""
-            }`}
-          >
-            Second Tab
-          </button>
+          {moduleName}
+        </h2>
+        
+        {/* Module Image */}
+        <div className="mb-6">
+          <img
+            src={moduleImage}
+            alt={moduleName}
+            className="w-36 h-36 object-contain bg-gray-700 rounded-lg p-2"
+          />
         </div>
 
-        <div className="flex-1 overflow-y-auto">
-          {activeTab === "stats" && (
-            <div>
-              <h2 className="text-lg font-bold mb-2">Bin Statistics</h2>
-              <ul className="space-y-2">
-                {residenceContext?.smartBins.map((bin) => (
-                  <li key={bin.binId}>
-                    {bin.binId} - {bin.binType} ({bin.filledPercentage}%)
-                  </li>
-                ))}
-              </ul>
+        {/* Mock Statistics */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold">Module Statistics</h3>
+          
+          <div className="bg-gray-700 p-3 rounded-lg">
+            <div className="flex justify-between mb-2">
+              <span>Oxygen Level</span>
+              <span className="text-green-400">95.2%</span>
             </div>
-          )}
+            <div className="w-full bg-gray-600 rounded-full h-2">
+              <div className="bg-green-400 h-2 rounded-full" style={{width: '95.2%'}}></div>
+            </div>
+          </div>
 
-          {activeTab === "second" && (
-            <div>
-              <h2 className="text-lg font-bold">Coming Soon...</h2>
-              <p>
-                {residenceContext.smartBins.toString()}
-              </p>
+          <div className="bg-gray-700 p-3 rounded-lg">
+            <div className="flex justify-between mb-2">
+              <span>Temperature</span>
+              <span className="text-blue-400">22.3°C</span>
             </div>
-          )}
+            <div className="w-full bg-gray-600 rounded-full h-2">
+              <div className="bg-blue-400 h-2 rounded-full" style={{width: '74%'}}></div>
+            </div>
+          </div>
+
+          <div className="bg-gray-700 p-3 rounded-lg">
+            <div className="flex justify-between mb-2">
+              <span>Humidity</span>
+              <span className="text-yellow-400">68%</span>
+            </div>
+            <div className="w-full bg-gray-600 rounded-full h-2">
+              <div className="bg-yellow-400 h-2 rounded-full" style={{width: '68%'}}></div>
+            </div>
+          </div>
+
+          <div className="bg-gray-700 p-3 rounded-lg">
+            <div className="flex justify-between mb-2">
+              <span>Power Status</span>
+              <span className="text-green-400">Online</span>
+            </div>
+            <div className="text-sm text-gray-300">Last updated: 2 min ago</div>
+          </div>
         </div>
       </div>
 
-      {/* Main Habitat Area */}
-      <div className="relative flex-1 h-full flex items-center justify-center">
-        <img
-          src={moduleImage}
-          alt="Residence"
-          className="h-full absolute right-5 drop-shadow-2xl"
-        />
-
-        {/* Large Circular Waste Bin Container */}
-        <div className="relative w-96 h-96 rounded-full bg-black/80 flex items-center justify-center shadow-lg">
-          {residenceContext?.smartBins.map((bin, i) => {
-            const angle = (360 / residenceContext.smartBins.length) * i;
-            const radius = 150; // adjust circle size
-            const x = radius * Math.cos((angle * Math.PI) / 180);
-            const y = radius * Math.sin((angle * Math.PI) / 180);
-
-            return (
-              <div
-                key={bin.binId}
-                className="absolute w-16 h-16 rounded-md flex flex-col items-center justify-center text-[10px] font-bold p-1"
-                style={{
-                  backgroundColor: ["#86efac","#93c5fd","#fde047","#fca5a5"][i % 4],
-                  transform: `translate(${x}px, ${y}px)`
+      {/* Bins Display or Bin Details */}
+      <div className="flex-1 h-full bg-gray-900 p-6 rounded-md">
+        {!selectedBinId ? (
+          <>
+            <h2 className="text-2xl font-bold text-white mb-6">Smart Bins</h2>
+            <div className="grid grid-cols-4 gap-4">
+              {residenceContext?.smartBins.map((bin) => (
+                <SmartBinItem key={bin.binId} bin={bin} onClick={handleSelectBin} onAssigned={getBinData} />
+              ))}
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-bold text-white">Bin Contents</h2>
+              <button
+                className="p-2 px-3 bg-white/20 hover:bg-white/30 rounded text-white"
+                onClick={() => {
+                  setSelectedBinId(null);
+                  residenceContext.setTrashItems([]);
                 }}
               >
-                <span className="text-[9px]">{bin.binType}</span>
-                <span>{bin.filledPercentage}%</span>
+                Back to Bins
+              </button>
+            </div>
+            <div className="bg-gray-800 rounded-lg p-4">
+              <div className="text-white text-sm mb-3">Bin ID: {selectedBinId}</div>
+              <div className="grid grid-cols-3 gap-3">
+                {residenceContext.trashItems.length === 0 && (
+                  <div className="text-gray-300">No items in this bin.</div>
+                )}
+                {residenceContext.trashItems.map((item) => (
+                  <div key={item.trashId} className="bg-gray-700 p-3 rounded text-white">
+                    <div className="text-xs text-gray-300 mb-1">ID: {item.trashId}</div>
+                    <div className="text-sm font-semibold mb-1">{item.codeName}</div>
+                    <div className="text-xs">Category: {item.category}</div>
+                    <div className="text-xs">Weight: {item.weight} kg</div>
+                  </div>
+                ))}
               </div>
-            );
-          })}
-        </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
