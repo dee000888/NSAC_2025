@@ -39,9 +39,6 @@ export type TrashItemSchema = {
 
 
 
-
-
-
 export type MonthlySummery = {
   month: string;
   year: number;
@@ -67,15 +64,13 @@ export type MonthlySummery = {
 
 
 
-// Application Categories Enum
-export enum Application {
+export enum ManuFactoryApplicationEnum {
   RENOVATION = "RENOVATION",
   CELEBRATION = "CELEBRATION",
   DISCOVERY = "DISCOVERY"
 }
 
-// Category Enum - Item categories
-export enum Category {
+export enum ItemCategoryEnum {
   FABRIC = "FABRIC",
   POLYMER = "POLYMER",
   GLASS = "GLASS",
@@ -84,26 +79,31 @@ export enum Category {
   PAPER = "PAPER"
 }
 
-// Type definitions for the datasets
-export interface Consumable {
-  name: string;
+export type ConsumableItemSchema = {
+  name: string; 
   codeName: string;
-  category: Category;
+  category: ItemCategoryEnum;
   quantity: number;
   weight_kg: number;
-  rawMaterials: RawMaterial[];
-  recycleProcess: RecycleProcess[];
+  recycleProcess: {
+    process: RecycleProcessEnum;
+    outputMaterials: {
+      [key: string]: number;
+    };
+  };
 }
 
-export interface ManufacturableItem {
+export type ManufacturableItemSchema = {
   itemName: string;
-  rawMaterials: RawMaterial[];
-  manufactureProcess: ManufactureProcess[];
-  application: Application;
+  rawMaterials: {
+    [key: string]: number;
+  };
+  manufactureProcess: ManufactureProcessEnum[];
+  application: ManuFactoryApplicationEnum;
 }
 
 
-export enum RawMaterial {
+export enum RawMaterialEnum {
   COTTON = "COTTON",
   CELLULOSE_FIBER = "CELLULOSE_FIBER",
   POLYESTER = "POLYESTER",
@@ -149,8 +149,7 @@ export enum RawMaterial {
   CARBON = "CARBON"
 }
 
-// Recycling Processes Enum - All processes from the consumables dataset
-export enum RecycleProcess {
+export enum RecycleProcessEnum {
   MECHANICAL_SHREDDING = "MECHANICAL_SHREDDING",
   PULPING = "PULPING",
   FIBER_EXTRACTION = "FIBER_EXTRACTION",
@@ -190,7 +189,7 @@ export enum RecycleProcess {
 }
 
 // Manufacturing Processes Enum - Processes for creating new items
-export enum ManufactureProcess {
+export enum ManufactureProcessEnum {
   THREE_D_PRINTING = "THREE_D_PRINTING",
   HAND_CRAFTING = "HAND_CRAFTING",
   INJECTION_MOLDING = "INJECTION_MOLDING",

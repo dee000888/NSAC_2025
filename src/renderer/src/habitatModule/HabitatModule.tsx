@@ -1,12 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import moduleImage from "../assets/images/(modules)/circular-module_1-Photoroom.png";
 import { ResidenceContext } from "@renderer/contexts/ResidenceContext";
-import { HabitatModuleEnum, SmartBinSchema } from "@renderer/lib/types";
+import { HabitatModuleEnum, SmartBinSchema, ConsumableItemSchema, TrashItemSchema } from "@renderer/lib/types";
 import SmartBinItem from "./SmartBinItem";
+import ConsumableItemsPopup from "./ConsumableItemsPopup";
+import ModuleStatistics from "./ModuleStatistics";
 
 export default function HabitatModule({ moduleName }: { moduleName: HabitatModuleEnum }): React.ReactElement {
   
   const residenceContext = useContext(ResidenceContext);
+
+  const [selectedBinId, setSelectedBinId] = useState<string | null>(null);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   async function getBinData() {
     try {
@@ -17,11 +22,25 @@ export default function HabitatModule({ moduleName }: { moduleName: HabitatModul
     }
   }
 
+  async function getTrashData() {
+    try {
+      const trashItems: TrashItemSchema[] = await window.electron.ipcRenderer.invoke("getTrashItems", selectedBinId);
+      residenceContext?.setTrashItems(trashItems);
+    } catch (err) {
+      console.error("Failed to fetch trash data:", err);
+    }
+  }
+
   useEffect(() => {
     getBinData();
+    getTrashData();
   }, []);
 
-  const [selectedBinId, setSelectedBinId] = useState<string | null>(null);
+  useEffect(() => {
+    getTrashData();
+  }, [selectedBinId]);
+
+  
 
   async function handleSelectBin(bin: SmartBinSchema) {
     try {
@@ -63,48 +82,8 @@ export default function HabitatModule({ moduleName }: { moduleName: HabitatModul
           />
         </div>
 
-        {/* Mock Statistics */}
-        <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Module Statistics</h3>
-          
-          <div className="bg-gray-700 p-3 rounded-lg">
-            <div className="flex justify-between mb-2">
-              <span>Oxygen Level</span>
-              <span className="text-green-400">95.2%</span>
-            </div>
-            <div className="w-full bg-gray-600 rounded-full h-2">
-              <div className="bg-green-400 h-2 rounded-full" style={{width: '95.2%'}}></div>
-            </div>
-          </div>
-
-          <div className="bg-gray-700 p-3 rounded-lg">
-            <div className="flex justify-between mb-2">
-              <span>Temperature</span>
-              <span className="text-blue-400">22.3°C</span>
-            </div>
-            <div className="w-full bg-gray-600 rounded-full h-2">
-              <div className="bg-blue-400 h-2 rounded-full" style={{width: '74%'}}></div>
-            </div>
-          </div>
-
-          <div className="bg-gray-700 p-3 rounded-lg">
-            <div className="flex justify-between mb-2">
-              <span>Humidity</span>
-              <span className="text-yellow-400">68%</span>
-            </div>
-            <div className="w-full bg-gray-600 rounded-full h-2">
-              <div className="bg-yellow-400 h-2 rounded-full" style={{width: '68%'}}></div>
-            </div>
-          </div>
-
-          <div className="bg-gray-700 p-3 rounded-lg">
-            <div className="flex justify-between mb-2">
-              <span>Power Status</span>
-              <span className="text-green-400">Online</span>
-            </div>
-            <div className="text-sm text-gray-300">Last updated: 2 min ago</div>
-          </div>
-        </div>
+        {/* Module Statistics */}
+        <ModuleStatistics moduleName={moduleName} />
       </div>
 
       {/* Bins Display or Bin Details */}
@@ -122,15 +101,23 @@ export default function HabitatModule({ moduleName }: { moduleName: HabitatModul
           <>
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-white">Bin Contents</h2>
-              <button
-                className="p-2 px-3 bg-white/20 hover:bg-white/30 rounded text-white"
-                onClick={() => {
-                  setSelectedBinId(null);
-                  residenceContext.setTrashItems([]);
-                }}
-              >
-                Back to Bins
-              </button>
+              <div className="flex gap-3">
+                <button
+                  className="p-2 px-3 bg-green-600 hover:bg-green-500 rounded text-white"
+                  onClick={() => setIsPopupOpen(true)}
+                >
+                  Insert Trash
+                </button>
+                <button
+                  className="p-2 px-3 bg-white/20 hover:bg-white/30 rounded text-white"
+                  onClick={() => {
+                    setSelectedBinId(null);
+                    residenceContext.setTrashItems([]);
+                  }}
+                >
+                  Back to Bins
+                </button>
+              </div>
             </div>
             <div className="bg-gray-800 rounded-lg p-4">
               <div className="text-white text-sm mb-3">Bin ID: {selectedBinId}</div>
@@ -151,6 +138,29 @@ export default function HabitatModule({ moduleName }: { moduleName: HabitatModul
           </>
         )}
       </div>
+
+      {/* Consumable Items Popup */}
+      <ConsumableItemsPopup
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+        onSelectItem={async (item: ConsumableItemSchema) => {
+          setIsPopupOpen(false);
+          // Refresh trash items after adding new item
+          if (selectedBinId) {
+            try {
+              const items = await window.electron.ipcRenderer.invoke("getTrashItems", selectedBinId);
+              residenceContext?.setTrashItems(items);
+              console.log(`Item ${item.name} successfully added to bin ${selectedBinId}`);
+              
+              // Refresh the trash data to update statistics
+              getTrashData();
+            } catch (err) {
+              console.error("Failed to refresh trash items:", err);
+            }
+          }
+        }}
+        binId={selectedBinId || ""}
+      />
     </div>
   );
 }
