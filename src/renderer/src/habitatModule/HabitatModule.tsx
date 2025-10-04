@@ -1,16 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import moduleImage from "../assets/images/(modules)/circular-module_1-Photoroom.png";
 import { ResidenceContext } from "@renderer/contexts/ResidenceContext";
-import { HabitatModuleType, SmartBin } from "@renderer/lib/types";
+import { HabitatModuleEnum, SmartBinSchema } from "@renderer/lib/types";
 import SmartBinItem from "./SmartBinItem";
 
-export default function HabitatModule({ moduleName }: { moduleName: HabitatModuleType }): React.ReactElement {
+export default function HabitatModule({ moduleName }: { moduleName: HabitatModuleEnum }): React.ReactElement {
   
   const residenceContext = useContext(ResidenceContext);
 
   async function getBinData() {
     try {
-      const smartBins: SmartBin[] = await window.electron.ipcRenderer.invoke("getSmartBins", moduleName);
+      const smartBins: SmartBinSchema[] = await window.electron.ipcRenderer.invoke("getSmartBins", moduleName);
       residenceContext?.setSmartBins(smartBins);
     } catch (err) {
       console.error("Failed to fetch bin data:", err);
@@ -23,7 +23,7 @@ export default function HabitatModule({ moduleName }: { moduleName: HabitatModul
 
   const [selectedBinId, setSelectedBinId] = useState<string | null>(null);
 
-  async function handleSelectBin(bin: SmartBin) {
+  async function handleSelectBin(bin: SmartBinSchema) {
     try {
       setSelectedBinId(bin.binId);
       const items = await window.electron.ipcRenderer.invoke("getTrashItemsByBin", bin.binId);
@@ -142,7 +142,7 @@ export default function HabitatModule({ moduleName }: { moduleName: HabitatModul
                   <div key={item.trashId} className="bg-gray-700 p-3 rounded text-white">
                     <div className="text-xs text-gray-300 mb-1">ID: {item.trashId}</div>
                     <div className="text-sm font-semibold mb-1">{item.codeName}</div>
-                    <div className="text-xs">Category: {item.category}</div>
+                    {/*<div className="text-xs">Category: {item.category}</div>*/}
                     <div className="text-xs">Weight: {item.weight} kg</div>
                   </div>
                 ))}

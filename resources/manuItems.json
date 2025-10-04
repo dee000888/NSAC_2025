@@ -1,0 +1,302 @@
+[
+  {
+    "itemName": "Habitat Insulation Panels",
+    "rawMaterials": ["POLYETHYLENE_FOAM", "ALUMINUM_FOIL", "CELLULOSE_FIBER"],
+    "manufactureProcess": ["COMPRESSION_MOLDING", "LAMINATING", "CUTTING_AND_SHAPING"],
+    "application": "RENOVATION"
+  },
+  {
+    "itemName": "Structural Support Brackets",
+    "rawMaterials": ["ALUMINUM", "CARBON_FIBER"],
+    "manufactureProcess": ["CASTING", "CNC_MACHINING", "WELDING"],
+    "application": "RENOVATION"
+  },
+  {
+    "itemName": "Floor Tiles",
+    "rawMaterials": ["POLYPROPYLENE", "CARBON", "POLYETHYLENE"],
+    "manufactureProcess": ["COMPRESSION_MOLDING", "SINTERING", "CUTTING_AND_SHAPING"],
+    "application": "RENOVATION"
+  },
+  {
+    "itemName": "Storage Shelving Units",
+    "rawMaterials": ["ALUMINUM", "POLYETHYLENE"],
+    "manufactureProcess": ["MECHANICAL_ASSEMBLY", "WELDING", "THREE_D_PRINTING"],
+    "application": "RENOVATION"
+  },
+  {
+    "itemName": "Wall Partitions",
+    "rawMaterials": ["ALUMINUM", "POLYETHYLENE_FOAM", "FABRIC_BACKING"],
+    "manufactureProcess": ["MECHANICAL_ASSEMBLY", "ADHESIVE_BONDING", "LAMINATING"],
+    "application": "RENOVATION"
+  },
+  {
+    "itemName": "Furniture Framework",
+    "rawMaterials": ["ALUMINUM", "CARBON_FIBER", "POLYESTER"],
+    "manufactureProcess": ["WELDING", "FIBER_LAYING", "MECHANICAL_ASSEMBLY"],
+    "application": "RENOVATION"
+  },
+  {
+    "itemName": "Cushioned Seating",
+    "rawMaterials": ["POLYETHYLENE_FOAM", "COTTON", "POLYESTER"],
+    "manufactureProcess": ["COMPRESSION_MOLDING", "SEWING", "HAND_CRAFTING"],
+    "application": "RENOVATION"
+  },
+  {
+    "itemName": "Cable Management Trays",
+    "rawMaterials": ["ALUMINUM", "POLYPROPYLENE"],
+    "manufactureProcess": ["EXTRUSION_MOLDING", "CNC_MACHINING", "THREE_D_PRINTING"],
+    "application": "RENOVATION"
+  },
+  {
+    "itemName": "Ventilation Ducting",
+    "rawMaterials": ["ALUMINUM", "POLYETHYLENE"],
+    "manufactureProcess": ["EXTRUSION_MOLDING", "WELDING", "MECHANICAL_ASSEMBLY"],
+    "application": "RENOVATION"
+  },
+  {
+    "itemName": "Door Panels",
+    "rawMaterials": ["ALUMINUM", "POLYETHYLENE_FOAM", "CARBON_FIBER"],
+    "manufactureProcess": ["LAMINATING", "COMPRESSION_MOLDING", "CNC_MACHINING"],
+    "application": "RENOVATION"
+  },
+  {
+    "itemName": "Decorative Banners",
+    "rawMaterials": ["POLYESTER", "COTTON", "INK"],
+    "manufactureProcess": ["SEWING", "HAND_CRAFTING", "WEAVING"],
+    "application": "CELEBRATION"
+  },
+  {
+    "itemName": "Party Hats",
+    "rawMaterials": ["PAPER", "CELLULOSE_FIBER", "ADHESIVE_RESIDUE"],
+    "manufactureProcess": ["HAND_CRAFTING", "PULP_MOLDING", "ADHESIVE_BONDING"],
+    "application": "CELEBRATION"
+  },
+  {
+    "itemName": "Confetti",
+    "rawMaterials": ["PAPER", "ALUMINUM_FOIL", "POLYESTER"],
+    "manufactureProcess": ["CUTTING_AND_SHAPING", "MECHANICAL_SHREDDING", "HAND_CRAFTING"],
+    "application": "CELEBRATION"
+  },
+  {
+    "itemName": "Disco Ball",
+    "rawMaterials": ["POLYETHYLENE_FOAM", "ALUMINUM_FOIL", "ADHESIVE_RESIDUE"],
+    "manufactureProcess": ["HAND_CRAFTING", "ADHESIVE_BONDING", "CUTTING_AND_SHAPING"],
+    "application": "CELEBRATION"
+  },
+  {
+    "itemName": "Decorative Streamers",
+    "rawMaterials": ["POLYETHYLENE", "ALUMINUM_FOIL", "PAPER"],
+    "manufactureProcess": ["EXTRUSION_MOLDING", "CUTTING_AND_SHAPING", "HAND_CRAFTING"],
+    "application": "CELEBRATION"
+  },
+  {
+    "itemName": "Party Plates",
+    "rawMaterials": ["POLYPROPYLENE", "PAPER", "CELLULOSE_FIBER"],
+    "manufactureProcess": ["COMPRESSION_MOLDING", "PULP_MOLDING", "THERMOFORMING"],
+    "application": "CELEBRATION"
+  },
+  {
+    "itemName": "Party Cups",
+    "rawMaterials": ["POLYPROPYLENE", "POLYETHYLENE", "PAPER"],
+    "manufactureProcess": ["INJECTION_MOLDING", "THERMOFORMING", "PULP_MOLDING"],
+    "application": "CELEBRATION"
+  },
+  {
+    "itemName": "Gift Wrapping Paper",
+    "rawMaterials": ["PAPER", "CELLULOSE_FIBER", "INK"],
+    "manufactureProcess": ["PULP_MOLDING", "PRESSING", "HAND_CRAFTING"],
+    "application": "CELEBRATION"
+  },
+  {
+    "itemName": "Decorative Garlands",
+    "rawMaterials": ["COTTON", "POLYESTER", "ALUMINUM_FOIL"],
+    "manufactureProcess": ["WEAVING", "SEWING", "HAND_CRAFTING"],
+    "application": "CELEBRATION"
+  },
+  {
+    "itemName": "Balloons",
+    "rawMaterials": ["NITRILE_RUBBER", "POLYETHYLENE"],
+    "manufactureProcess": ["INJECTION_MOLDING", "THERMOFORMING", "HAND_CRAFTING"],
+    "application": "CELEBRATION"
+  },
+  {
+    "itemName": "Carbon Filter Cartridges",
+    "rawMaterials": ["CARBON", "POLYPROPYLENE", "NYLON"],
+    "manufactureProcess": ["SINTERING", "COMPRESSION_MOLDING", "MECHANICAL_ASSEMBLY"],
+    "application": "DISCOVERY"
+  },
+  {
+    "itemName": "Laboratory Sample Containers",
+    "rawMaterials": ["POLYPROPYLENE", "POLYETHYLENE"],
+    "manufactureProcess": ["INJECTION_MOLDING", "THREE_D_PRINTING", "THERMOFORMING"],
+    "application": "DISCOVERY"
+  },
+  {
+    "itemName": "Air Filter Membranes",
+    "rawMaterials": ["CARBON", "NYLON", "POLYESTER"],
+    "manufactureProcess": ["SINTERING", "FIBER_LAYING", "LAMINATING"],
+    "application": "DISCOVERY"
+  },
+  {
+    "itemName": "Experiment Mounting Brackets",
+    "rawMaterials": ["ALUMINUM", "CARBON_FIBER"],
+    "manufactureProcess": ["CNC_MACHINING", "THREE_D_PRINTING", "MECHANICAL_ASSEMBLY"],
+    "application": "DISCOVERY"
+  },
+  {
+    "itemName": "Carbon Composite Rods",
+    "rawMaterials": ["CARBON", "CARBON_FIBER", "EPOXY_RESIN"],
+    "manufactureProcess": ["SINTERING", "COMPRESSION_MOLDING", "FIBER_LAYING"],
+    "application": "DISCOVERY"
+  },
+  {
+    "itemName": "Protective Equipment Cases",
+    "rawMaterials": ["POLYPROPYLENE", "POLYETHYLENE_FOAM", "ALUMINUM"],
+    "manufactureProcess": ["INJECTION_MOLDING", "LAMINATING", "MECHANICAL_ASSEMBLY"],
+    "application": "DISCOVERY"
+  },
+  {
+    "itemName": "Sample Collection Bags",
+    "rawMaterials": ["POLYETHYLENE", "NYLON"],
+    "manufactureProcess": ["EXTRUSION_MOLDING", "SEWING", "HAND_CRAFTING"],
+    "application": "DISCOVERY"
+  },
+  {
+    "itemName": "Carbon Electrode Plates",
+    "rawMaterials": ["CARBON", "COPPER"],
+    "manufactureProcess": ["SINTERING", "COMPRESSION_MOLDING", "CNC_MACHINING"],
+    "application": "DISCOVERY"
+  },
+  {
+    "itemName": "Mesh Filter Screens",
+    "rawMaterials": ["NYLON", "POLYESTER", "STEEL"],
+    "manufactureProcess": ["WEAVING", "CNC_MACHINING", "MECHANICAL_ASSEMBLY"],
+    "application": "DISCOVERY"
+  },
+  {
+    "itemName": "Sealable Test Chambers",
+    "rawMaterials": ["POLYPROPYLENE", "NITRILE_RUBBER", "ALUMINUM"],
+    "manufactureProcess": ["INJECTION_MOLDING", "COMPRESSION_MOLDING", "MECHANICAL_ASSEMBLY"],
+    "application": "DISCOVERY"
+  },
+  {
+    "itemName": "Repair Patches",
+    "rawMaterials": ["POLYETHYLENE", "ADHESIVE_RESIDUE", "FABRIC_BACKING"],
+    "manufactureProcess": ["LAMINATING", "HAND_CRAFTING", "CUTTING_AND_SHAPING"],
+    "application": "RENOVATION"
+  },
+  {
+    "itemName": "Pressure Seals",
+    "rawMaterials": ["NITRILE_RUBBER", "SILICONE_RUBBER"],
+    "manufactureProcess": ["COMPRESSION_MOLDING", "INJECTION_MOLDING", "HAND_CRAFTING"],
+    "application": "RENOVATION"
+  },
+  {
+    "itemName": "Thermal Blankets",
+    "rawMaterials": ["ALUMINUM_FOIL", "POLYESTER", "POLYETHYLENE_FOAM"],
+    "manufactureProcess": ["LAMINATING", "SEWING", "ADHESIVE_BONDING"],
+    "application": "RENOVATION"
+  },
+  {
+    "itemName": "Tool Handles",
+    "rawMaterials": ["POLYPROPYLENE", "NITRILE_RUBBER", "CARBON_FIBER"],
+    "manufactureProcess": ["INJECTION_MOLDING", "THREE_D_PRINTING", "MECHANICAL_ASSEMBLY"],
+    "application": "RENOVATION"
+  },
+  {
+    "itemName": "Fastener Clips",
+    "rawMaterials": ["NYLON", "POLYPROPYLENE", "STEEL"],
+    "manufactureProcess": ["INJECTION_MOLDING", "THREE_D_PRINTING", "CNC_MACHINING"],
+    "application": "RENOVATION"
+  },
+  {
+    "itemName": "Picture Frames",
+    "rawMaterials": ["ALUMINUM", "POLYETHYLENE", "PAPER"],
+    "manufactureProcess": ["CNC_MACHINING", "MECHANICAL_ASSEMBLY", "HAND_CRAFTING"],
+    "application": "CELEBRATION"
+  },
+  {
+    "itemName": "Name Tags",
+    "rawMaterials": ["PAPER", "PLASTIC_COATING", "INK"],
+    "manufactureProcess": ["PULP_MOLDING", "LAMINATING", "HAND_CRAFTING"],
+    "application": "CELEBRATION"
+  },
+  {
+    "itemName": "Tablecloths",
+    "rawMaterials": ["POLYESTER", "COTTON", "NYLON"],
+    "manufactureProcess": ["WEAVING", "SEWING", "HAND_CRAFTING"],
+    "application": "CELEBRATION"
+  },
+  {
+    "itemName": "Napkins",
+    "rawMaterials": ["COTTON", "CELLULOSE_FIBER", "PAPER"],
+    "manufactureProcess": ["PULP_MOLDING", "SEWING", "PRESSING"],
+    "application": "CELEBRATION"
+  },
+  {
+    "itemName": "Carbon Absorption Beds",
+    "rawMaterials": ["CARBON", "ALUMINUM", "NYLON"],
+    "manufactureProcess": ["SINTERING", "MECHANICAL_ASSEMBLY", "COMPRESSION_MOLDING"],
+    "application": "DISCOVERY"
+  },
+  {
+    "itemName": "Experiment Labels",
+    "rawMaterials": ["PAPER", "ADHESIVE_RESIDUE", "INK"],
+    "manufactureProcess": ["PULP_MOLDING", "HAND_CRAFTING", "ADHESIVE_BONDING"],
+    "application": "DISCOVERY"
+  },
+  {
+    "itemName": "Protective Gloves",
+    "rawMaterials": ["NITRILE_RUBBER", "NYLON", "COTTON"],
+    "manufactureProcess": ["INJECTION_MOLDING", "SEWING", "HAND_CRAFTING"],
+    "application": "DISCOVERY"
+  },
+  {
+    "itemName": "Sample Scoops",
+    "rawMaterials": ["ALUMINUM", "POLYPROPYLENE"],
+    "manufactureProcess": ["CNC_MACHINING", "THREE_D_PRINTING", "CASTING"],
+    "application": "DISCOVERY"
+  },
+  {
+    "itemName": "Wire Organizers",
+    "rawMaterials": ["POLYPROPYLENE", "NYLON", "ALUMINUM"],
+    "manufactureProcess": ["INJECTION_MOLDING", "THREE_D_PRINTING", "MECHANICAL_ASSEMBLY"],
+    "application": "RENOVATION"
+  },
+  {
+    "itemName": "Pipe Connectors",
+    "rawMaterials": ["POLYPROPYLENE", "NITRILE_RUBBER", "ALUMINUM"],
+    "manufactureProcess": ["INJECTION_MOLDING", "COMPRESSION_MOLDING", "CNC_MACHINING"],
+    "application": "RENOVATION"
+  },
+  {
+    "itemName": "Habitat Window Covers",
+    "rawMaterials": ["ALUMINUM_FOIL", "POLYESTER", "CARBON_FIBER"],
+    "manufactureProcess": ["LAMINATING", "MECHANICAL_ASSEMBLY", "SEWING"],
+    "application": "RENOVATION"
+  },
+  {
+    "itemName": "Equipment Straps",
+    "rawMaterials": ["NYLON", "POLYESTER", "PLASTIC_CAP"],
+    "manufactureProcess": ["WEAVING", "SEWING", "INJECTION_MOLDING"],
+    "application": "RENOVATION"
+  },
+  {
+    "itemName": "Science Poster Board",
+    "rawMaterials": ["PAPER", "CELLULOSE_FIBER", "ADHESIVE_RESIDUE"],
+    "manufactureProcess": ["PULP_MOLDING", "LAMINATING", "PRESSING"],
+    "application": "DISCOVERY"
+  },
+  {
+    "itemName": "Specimen Slides",
+    "rawMaterials": ["POLYPROPYLENE", "POLYETHYLENE"],
+    "manufactureProcess": ["INJECTION_MOLDING", "CNC_MACHINING", "THREE_D_PRINTING"],
+    "application": "DISCOVERY"
+  },
+  {
+    "itemName": "Safety Barrier Tape",
+    "rawMaterials": ["POLYETHYLENE", "INK", "NYLON"],
+    "manufactureProcess": ["EXTRUSION_MOLDING", "HAND_CRAFTING", "WEAVING"],
+    "application": "DISCOVERY"
+  }
+]

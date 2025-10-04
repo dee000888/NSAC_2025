@@ -1,108 +1,4 @@
-export enum HabitatModuleEnum {
-  LivingSpaceModule = "LivingSpaceModule",
-  StorageModule = "StorageModule",
-  SurgicalModule = "SurgicalModule",
-  LabModule = "LabModule",
-  RecyclingModule = "RecyclingModule",
-  PlantationModule = "PlantationModule"
-}
-
-export enum BinMobilityEnum {
-  INDOOR = "INDOOR",
-  INSTATION = "INSTATION"
-}
-
-export type SmartBinSchema = {
-  binId: string;
-  moduleName: HabitatModuleEnum;
-  mobility: BinMobilityEnum;
-  filledPercentage: number;
-}
-
-export enum TrashCategoryEnum {
-  FABRIC = "FABRIC",
-  PLASTIC = "PLASTIC",
-  GLASS = "GLASS",
-  METAL = "METAL",
-  PAPER = "PAPER",
-  COMPOSITE = "COMPOSITE"
-}
-
-export type TrashItemSchema = {
-  trashId: string;
-  binId: string;
-  codeName: string;
-  weight: number;
-}
-
-
-
-
-
-
-
-
-export type MonthlySummery = {
-  month: string;
-  year: number;
-  
-  totalFabricCollected: number;
-  totalPlasticCollected: number;
-  totalGlassCollected: number;
-  totalMetalCollected: number;
-  totalPaperCollected: number;
-  totalCompositeCollected: number;
-  
-  totalFabricRecycled: number;
-  totalPlasticRecycled: number;
-  totalGlassRecycled: number;
-  totalMetalRecycled: number;
-  totalPaperRecycled: number;
-  totalCompositeRecycled: number;
-}
-
-
-
-
-
-
-
-// Application Categories Enum
-export enum Application {
-  RENOVATION = "RENOVATION",
-  CELEBRATION = "CELEBRATION",
-  DISCOVERY = "DISCOVERY"
-}
-
-// Category Enum - Item categories
-export enum Category {
-  FABRIC = "FABRIC",
-  POLYMER = "POLYMER",
-  GLASS = "GLASS",
-  METAL = "METAL",
-  COMPOSITE = "COMPOSITE",
-  PAPER = "PAPER"
-}
-
-// Type definitions for the datasets
-export interface Consumable {
-  name: string;
-  codeName: string;
-  category: Category;
-  quantity: number;
-  weight_kg: number;
-  rawMaterials: RawMaterial[];
-  recycleProcess: RecycleProcess[];
-}
-
-export interface ManufacturableItem {
-  itemName: string;
-  rawMaterials: RawMaterial[];
-  manufactureProcess: ManufactureProcess[];
-  application: Application;
-}
-
-
+// Raw Materials Enum - All materials from the consumables dataset
 export enum RawMaterial {
   COTTON = "COTTON",
   CELLULOSE_FIBER = "CELLULOSE_FIBER",
@@ -211,4 +107,39 @@ export enum ManufactureProcess {
   SEWING = "SEWING",
   VACUUM_FORMING = "VACUUM_FORMING",
   CUTTING_AND_SHAPING = "CUTTING_AND_SHAPING"
+}
+
+// Application Categories Enum
+export enum Application {
+  RENOVATION = "RENOVATION",
+  CELEBRATION = "CELEBRATION",
+  DISCOVERY = "DISCOVERY"
+}
+
+// Category Enum - Item categories
+export enum Category {
+  FABRIC = "FABRIC",
+  POLYMER = "POLYMER",
+  GLASS = "GLASS",
+  METAL = "METAL",
+  COMPOSITE = "COMPOSITE",
+  PAPER = "PAPER"
+}
+
+// Type definitions for the datasets
+export interface Consumable {
+  name: string;
+  codeName: string;
+  category: Category;
+  quantity: number;
+  weight_kg: number;
+  rawMaterials: RawMaterial[];
+  recycleProcess: RecycleProcess[];
+}
+
+export interface ManufacturableItem {
+  itemName: string;
+  rawMaterials: RawMaterial[];
+  manufactureProcess: ManufactureProcess[];
+  application: Application;
 }

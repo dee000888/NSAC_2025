@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { animate } from "animejs";
 
-type HabitatModuleProps = {
+type HabitatModuleSelecterProps = {
   top: number;
   right: number;
   onClick: () => void;
@@ -9,7 +9,7 @@ type HabitatModuleProps = {
   onLeave: () => void;
 };
 
-export default function HabitatModule(props: HabitatModuleProps): React.ReactElement {
+export default function HabitatModuleSelecter(props: HabitatModuleSelecterProps): React.ReactElement {
   
   const [hovering, setHovering] = useState(false);
   const ringRef = useRef<HTMLDivElement>(null);

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ResidenceContext } from "./contexts/ResidenceContext";
 import Jezero from "./jezero/Jezero";
 import HabitatModule from "./habitatModule/HabitatModule";
-import { HabitatModuleType } from "./lib/types";
+import { HabitatModuleEnum } from "./lib/types";
 
 export default function App(): React.JSX.Element {
   
@@ -18,8 +18,8 @@ export default function App(): React.JSX.Element {
 
   if (residenceContext.selectedScene === "Jezero") return <Jezero />;
   
-  if ((Object.keys(HabitatModuleType) as (keyof typeof HabitatModuleType)[])
-        .includes(residenceContext.selectedScene as any))  return <HabitatModule moduleName={residenceContext.selectedScene as HabitatModuleType} />;
+  if ((Object.keys(HabitatModuleEnum) as (keyof typeof HabitatModuleEnum)[])
+        .includes(residenceContext.selectedScene as any))  return <HabitatModule moduleName={residenceContext.selectedScene as HabitatModuleEnum} />;
   
   return <Jezero />;
   

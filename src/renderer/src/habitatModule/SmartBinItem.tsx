@@ -1,32 +1,30 @@
 import { useMemo, useState } from "react";
-import { HabitatModuleType, SmartBin } from "@renderer/lib/types";
+import { HabitatModuleEnum, SmartBinSchema } from "@renderer/lib/types";
 
 export default function SmartBinItem({
   bin,
   onClick,
   onAssigned,
 }: {
-  bin: SmartBin;
-  onClick: (bin: SmartBin) => void;
+  bin: SmartBinSchema;
+  onClick: (bin: SmartBinSchema) => void;
   onAssigned?: () => void;
 }): React.ReactElement {
   
   const [isAssignOpen, setIsAssignOpen] = useState(false);
-  const [selectedModule, setSelectedModule] = useState<HabitatModuleType | "">("");
+  const [selectedModule, setSelectedModule] = useState<HabitatModuleEnum | "">("");
   
   const cardClass = useMemo(() => {
     // Different gray shades by bin type
-    switch (bin.binType) {
+    switch (bin.mobility) {
       case "INDOOR":
         return "bg-gray-600";
-      case "OUTDOOR":
-        return "bg-gray-700";
       case "INSTATION":
         return "bg-gray-800";
       default:
         return "bg-gray-600";
     }
-  }, [bin.binType]);
+  }, [bin.mobility]);
 
   async function handleAssignConfirm() {
     if (!selectedModule) return;
@@ -46,7 +44,7 @@ export default function SmartBinItem({
   return (
     <div className={`${cardClass} rounded-lg p-4 text-white relative`}>
       
-      {bin.binType === "INDOOR" && (
+      {bin.mobility === "INDOOR" && (
         <button
           className="absolute top-2 right-2 text-xs bg-white/20 hover:bg-white/30 text-white px-2 py-1 rounded"
           onClick={() => setIsAssignOpen(true)}
@@ -56,7 +54,7 @@ export default function SmartBinItem({
       )}
 
       <button className="text-left w-full" onClick={() => onClick(bin)}>
-        <div className="text-sm font-semibold mb-2">{bin.binType}</div>
+        <div className="text-sm font-semibold mb-2">{bin.mobility}</div>
         <div className="text-xs text-gray-300 mb-2">ID: {bin.binId}</div>
         <div className="flex items-center justify-between">
           <span className="text-sm">Fill Level:</span>
@@ -84,10 +82,10 @@ export default function SmartBinItem({
             <select
               className="w-full bg-gray-800 text-white p-2 rounded mb-3"
               value={selectedModule}
-              onChange={(e) => setSelectedModule(e.target.value as HabitatModuleType)}
+              onChange={(e) => setSelectedModule(e.target.value as HabitatModuleEnum)}
             >
               <option value="">Select a module</option>
-              {Object.values(HabitatModuleType).map((m) => (
+              {Object.values(HabitatModuleEnum).map((m) => (
                 <option key={m} value={m}>
                   {m}
                 </option>

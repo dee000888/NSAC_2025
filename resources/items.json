@@ -1,0 +1,783 @@
+[
+  {
+    "name": "Cotton T-Shirt",
+    "codeName": "CREW-APPAREL-TS-001",
+    "category": "FABRIC",
+    "quantity": 240,
+    "weight_kg": 36.0,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"COTTON_SHREDS": 0.15}
+      },
+      {
+        "process": "PULPING",
+        "outputMaterials": {"COTTON_PULP": 0.14, "WATER": 0.01}
+      },
+      {
+        "process": "FIBER_EXTRACTION",
+        "outputMaterials": {"COTTON": 0.09, "CELLULOSE_FIBER": 0.06}
+      }
+    ]
+  },
+  {
+    "name": "Crew Pants",
+    "codeName": "CREW-APPAREL-PT-002",
+    "category": "FABRIC",
+    "quantity": 120,
+    "weight_kg": 48.0,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"MIXED_FABRIC_SHREDS": 0.4}
+      },
+      {
+        "process": "FIBER_SEPARATION",
+        "outputMaterials": {"COTTON": 0.2, "POLYESTER": 0.1, "NYLON": 0.1}
+      },
+      {
+        "process": "PULPING",
+        "outputMaterials": {"COTTON_PULP": 0.15, "CELLULOSE_FIBER": 0.05}
+      }
+    ]
+  },
+  {
+    "name": "Cotton Towel",
+    "codeName": "CREW-HYGIENE-TW-003",
+    "category": "FABRIC",
+    "quantity": 200,
+    "weight_kg": 100.0,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"COTTON_SHREDS": 0.5}
+      },
+      {
+        "process": "PULPING",
+        "outputMaterials": {"COTTON_PULP": 0.45, "WATER": 0.05}
+      },
+      {
+        "process": "FIBER_EXTRACTION",
+        "outputMaterials": {"COTTON": 0.3, "CELLULOSE_FIBER": 0.2}
+      }
+    ]
+  },
+  {
+    "name": "Washcloth",
+    "codeName": "CREW-HYGIENE-WC-004",
+    "category": "FABRIC",
+    "quantity": 400,
+    "weight_kg": 40.0,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"COTTON_SHREDS": 0.1}
+      },
+      {
+        "process": "PULPING",
+        "outputMaterials": {"COTTON_PULP": 0.09, "WATER": 0.01}
+      },
+      {
+        "process": "FIBER_EXTRACTION",
+        "outputMaterials": {"COTTON": 0.06, "CELLULOSE_FIBER": 0.04}
+      }
+    ]
+  },
+  {
+    "name": "Cleaning Wipes",
+    "codeName": "CREW-HYGIENE-CW-005",
+    "category": "FABRIC",
+    "quantity": 8760,
+    "weight_kg": 175.2,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"WET_FIBER_SHREDS": 0.02}
+      },
+      {
+        "process": "PULPING",
+        "outputMaterials": {"FIBER_PULP": 0.018}
+      },
+      {
+        "process": "WATER_EXTRACTION",
+        "outputMaterials": {"COTTON": 0.01, "CELLULOSE_FIBER": 0.006, "WATER": 0.004}
+      }
+    ]
+  },
+  {
+    "name": "Nitrile Gloves",
+    "codeName": "CREW-SAFETY-GL-006",
+    "category": "POLYMER",
+    "quantity": 17520,
+    "weight_kg": 70.08,
+    "recycleProcess": [
+      {
+        "process": "DEVULCANIZATION",
+        "outputMaterials": {"DEVULCANIZED_RUBBER": 0.0038, "SULFUR_COMPOUNDS": 0.0002}
+      },
+      {
+        "process": "MECHANICAL_GRINDING",
+        "outputMaterials": {"RUBBER_GRANULES": 0.0036}
+      },
+      {
+        "process": "REFORMING",
+        "outputMaterials": {"NITRILE_RUBBER": 0.0035}
+      }
+    ]
+  },
+  {
+    "name": "Food Overwrap Packaging",
+    "codeName": "CARGO-FOOD-OW-007",
+    "category": "COMPOSITE",
+    "quantity": 26280,
+    "weight_kg": 394.2,
+    "recycleProcess": [
+      {
+        "process": "THERMAL_SEPARATION",
+        "outputMaterials": {"SEPARATED_LAYERS": 0.015}
+      },
+      {
+        "process": "LAYER_DELAMINATION",
+        "outputMaterials": {"POLYESTER": 0.006, "POLYETHYLENE": 0.005, "ALUMINUM": 0.003, "ADHESIVE_RESIDUE": 0.001}
+      },
+      {
+        "process": "MECHANICAL_RECYCLING",
+        "outputMaterials": {"POLYESTER": 0.005, "POLYETHYLENE": 0.004, "ALUMINUM": 0.0025}
+      }
+    ]
+  },
+  {
+    "name": "Rehydratable Food Pouch",
+    "codeName": "CARGO-FOOD-RP-008",
+    "category": "POLYMER",
+    "quantity": 21900,
+    "weight_kg": 328.5,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"MIXED_POLYMER_SHREDS": 0.015}
+      },
+      {
+        "process": "DENSITY_SEPARATION",
+        "outputMaterials": {"NYLON": 0.007, "POLYETHYLENE": 0.005, "EVOH": 0.003}
+      },
+      {
+        "process": "MELT_EXTRUSION",
+        "outputMaterials": {"NYLON_PELLETS": 0.006, "POLYETHYLENE_PELLETS": 0.004}
+      }
+    ]
+  },
+  {
+    "name": "Drink Pouch",
+    "codeName": "CARGO-FOOD-DP-009",
+    "category": "COMPOSITE",
+    "quantity": 17520,
+    "weight_kg": 87.6,
+    "recycleProcess": [
+      {
+        "process": "THERMAL_SEPARATION",
+        "outputMaterials": {"SEPARATED_LAYERS": 0.005}
+      },
+      {
+        "process": "MECHANICAL_RECYCLING",
+        "outputMaterials": {"ALUMINUM": 0.002, "POLYETHYLENE": 0.0015, "PET": 0.0015}
+      },
+      {
+        "process": "MELTING",
+        "outputMaterials": {"ALUMINUM_INGOTS": 0.0018}
+      }
+    ]
+  },
+  {
+    "name": "Resealable Plastic Bag",
+    "codeName": "CARGO-PKG-RB-010",
+    "category": "POLYMER",
+    "quantity": 8760,
+    "weight_kg": 52.56,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"POLYETHYLENE_SHREDS": 0.006}
+      },
+      {
+        "process": "MELT_EXTRUSION",
+        "outputMaterials": {"POLYETHYLENE_FILAMENT": 0.0055}
+      },
+      {
+        "process": "PELLETIZING",
+        "outputMaterials": {"POLYETHYLENE": 0.005}
+      }
+    ]
+  },
+  {
+    "name": "Anti-Static Bag",
+    "codeName": "CARGO-PKG-ASB-011",
+    "category": "POLYMER",
+    "quantity": 2920,
+    "weight_kg": 17.52,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"TREATED_PE_SHREDS": 0.006}
+      },
+      {
+        "process": "MELT_EXTRUSION",
+        "outputMaterials": {"POLYETHYLENE_FILAMENT": 0.0055}
+      },
+      {
+        "process": "FILTRATION",
+        "outputMaterials": {"POLYETHYLENE": 0.005, "CONDUCTIVE_ADDITIVES": 0.0005}
+      }
+    ]
+  },
+  {
+    "name": "Air Cushion Packaging",
+    "codeName": "CARGO-PKG-AC-012",
+    "category": "POLYMER",
+    "quantity": 1460,
+    "weight_kg": 7.3,
+    "recycleProcess": [
+      {
+        "process": "DEFLATION",
+        "outputMaterials": {"FLAT_PE_FILM": 0.005}
+      },
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"POLYETHYLENE_SHREDS": 0.0048}
+      },
+      {
+        "process": "MELT_EXTRUSION",
+        "outputMaterials": {"POLYETHYLENE": 0.0045}
+      }
+    ]
+  },
+  {
+    "name": "Bubble Wrap",
+    "codeName": "CARGO-PKG-BW-013",
+    "category": "POLYMER",
+    "quantity": 730,
+    "weight_kg": 14.6,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"POLYETHYLENE_SHREDS": 0.02}
+      },
+      {
+        "process": "MELT_EXTRUSION",
+        "outputMaterials": {"POLYETHYLENE_FILAMENT": 0.018}
+      },
+      {
+        "process": "PELLETIZING",
+        "outputMaterials": {"POLYETHYLENE": 0.017}
+      }
+    ]
+  },
+  {
+    "name": "Zotek F30 Foam",
+    "codeName": "CARGO-PKG-ZF-014",
+    "category": "POLYMER",
+    "quantity": 146,
+    "weight_kg": 73.0,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_COMPRESSION",
+        "outputMaterials": {"COMPRESSED_FOAM": 0.5}
+      },
+      {
+        "process": "SHREDDING",
+        "outputMaterials": {"FOAM_SHREDS": 0.48}
+      },
+      {
+        "process": "MELT_EXTRUSION",
+        "outputMaterials": {"POLYETHYLENE_FOAM": 0.45}
+      }
+    ]
+  },
+  {
+    "name": "Plastazote LD45 Foam",
+    "codeName": "CARGO-PKG-PL-015",
+    "category": "POLYMER",
+    "quantity": 292,
+    "weight_kg": 58.4,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_COMPRESSION",
+        "outputMaterials": {"COMPRESSED_FOAM": 0.2}
+      },
+      {
+        "process": "SHREDDING",
+        "outputMaterials": {"FOAM_SHREDS": 0.19}
+      },
+      {
+        "process": "MELT_EXTRUSION",
+        "outputMaterials": {"POLYETHYLENE_FOAM": 0.18}
+      }
+    ]
+  },
+  {
+    "name": "Cargo Transfer Bag",
+    "codeName": "EVA-CARGO-CTB-016",
+    "category": "FABRIC",
+    "quantity": 292,
+    "weight_kg": 175.2,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"ARAMID_SHREDS": 0.6}
+      },
+      {
+        "process": "PYROLYSIS",
+        "outputMaterials": {"CARBON_CHAR": 0.3, "PYROLYSIS_OIL": 0.15, "PYROLYSIS_GAS": 0.15}
+      },
+      {
+        "process": "CARBON_CHAR_EXTRACTION",
+        "outputMaterials": {"NOMEX": 0.2, "CHAR": 0.1}
+      }
+    ]
+  },
+  {
+    "name": "Aluminum Structural Panel",
+    "codeName": "STRUCT-FRAME-AP-017",
+    "category": "METAL",
+    "quantity": 48,
+    "weight_kg": 480.0,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_CUTTING",
+        "outputMaterials": {"ALUMINUM_CHUNKS": 10.0}
+      },
+      {
+        "process": "MELTING",
+        "outputMaterials": {"MOLTEN_ALUMINUM": 9.8}
+      },
+      {
+        "process": "DROSS_REMOVAL",
+        "outputMaterials": {"PURE_ALUMINUM": 9.5, "ALUMINUM_OXIDE": 0.3}
+      },
+      {
+        "process": "CASTING",
+        "outputMaterials": {"ALUMINUM": 9.4}
+      }
+    ]
+  },
+  {
+    "name": "Aluminum Cargo Container",
+    "codeName": "CARGO-CONT-AC-018",
+    "category": "METAL",
+    "quantity": 24,
+    "weight_kg": 360.0,
+    "recycleProcess": [
+      {
+        "process": "DISASSEMBLY",
+        "outputMaterials": {"ALUMINUM_PARTS": 15.0}
+      },
+      {
+        "process": "MECHANICAL_CUTTING",
+        "outputMaterials": {"ALUMINUM_CHUNKS": 14.8}
+      },
+      {
+        "process": "MELTING",
+        "outputMaterials": {"MOLTEN_ALUMINUM": 14.5}
+      },
+      {
+        "process": "CASTING",
+        "outputMaterials": {"ALUMINUM": 14.0, "ALUMINUM_OXIDE": 0.5}
+      }
+    ]
+  },
+  {
+    "name": "Carbon Fiber Composite Tool",
+    "codeName": "TOOL-COMP-CF-019",
+    "category": "COMPOSITE",
+    "quantity": 36,
+    "weight_kg": 54.0,
+    "recycleProcess": [
+      {
+        "process": "PYROLYSIS",
+        "outputMaterials": {"CARBON_FIBER": 0.8, "PYROLYSIS_OIL": 0.3, "PYROLYSIS_GAS": 0.2}
+      },
+      {
+        "process": "FIBER_RECOVERY",
+        "outputMaterials": {"CARBON_FIBER": 0.75}
+      },
+      {
+        "process": "RESIN_DECOMPOSITION",
+        "outputMaterials": {"EPOXY_RESIN": 0.3, "CHAR": 0.15}
+      }
+    ]
+  },
+  {
+    "name": "Duct Tape Roll",
+    "codeName": "TOOL-REPAIR-DT-020",
+    "category": "COMPOSITE",
+    "quantity": 146,
+    "weight_kg": 21.9,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"COMPOSITE_SHREDS": 0.15}
+      },
+      {
+        "process": "PYROLYSIS",
+        "outputMaterials": {"POLYETHYLENE": 0.08, "PYROLYSIS_OIL": 0.04, "PYROLYSIS_GAS": 0.03}
+      },
+      {
+        "process": "CHAR_EXTRACTION",
+        "outputMaterials": {"FABRIC_BACKING": 0.05, "CHAR": 0.02, "ADHESIVE_RESIDUE": 0.01}
+      }
+    ]
+  },
+  {
+    "name": "Paper Wipes",
+    "codeName": "CREW-HYGIENE-PW-021",
+    "category": "PAPER",
+    "quantity": 4380,
+    "weight_kg": 43.8,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"PAPER_SHREDS": 0.01}
+      },
+      {
+        "process": "PULPING",
+        "outputMaterials": {"FIBER_PULP": 0.009}
+      },
+      {
+        "process": "WATER_EXTRACTION",
+        "outputMaterials": {"CELLULOSE_FIBER": 0.007, "WATER": 0.003}
+      }
+    ]
+  },
+  {
+    "name": "Cardboard Box",
+    "codeName": "CARGO-PKG-CB-022",
+    "category": "PAPER",
+    "quantity": 876,
+    "weight_kg": 131.4,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"CARDBOARD_SHREDS": 0.15}
+      },
+      {
+        "process": "PULPING",
+        "outputMaterials": {"FIBER_PULP": 0.14}
+      },
+      {
+        "process": "FIBER_EXTRACTION",
+        "outputMaterials": {"CELLULOSE_FIBER": 0.1, "LIGNIN": 0.04}
+      }
+    ]
+  },
+  {
+    "name": "Polyester Flight Suit",
+    "codeName": "CREW-APPAREL-FS-023",
+    "category": "FABRIC",
+    "quantity": 48,
+    "weight_kg": 28.8,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"POLYESTER_SHREDS": 0.6}
+      },
+      {
+        "process": "MELT_EXTRUSION",
+        "outputMaterials": {"POLYESTER_FILAMENT": 0.4, "NYLON_FILAMENT": 0.15}
+      },
+      {
+        "process": "FIBER_SPINNING",
+        "outputMaterials": {"POLYESTER": 0.35, "NYLON": 0.13}
+      }
+    ]
+  },
+  {
+    "name": "Nylon Straps",
+    "codeName": "CARGO-SECURE-NS-024",
+    "category": "POLYMER",
+    "quantity": 584,
+    "weight_kg": 58.4,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"NYLON_SHREDS": 0.1}
+      },
+      {
+        "process": "MELT_EXTRUSION",
+        "outputMaterials": {"NYLON_FILAMENT": 0.095}
+      },
+      {
+        "process": "PELLETIZING",
+        "outputMaterials": {"NYLON": 0.09}
+      }
+    ]
+  },
+  {
+    "name": "Velcro Fasteners",
+    "codeName": "CREW-APPAREL-VF-025",
+    "category": "POLYMER",
+    "quantity": 2920,
+    "weight_kg": 14.6,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"MIXED_POLYMER_SHREDS": 0.005}
+      },
+      {
+        "process": "MELT_EXTRUSION",
+        "outputMaterials": {"NYLON": 0.003, "POLYESTER": 0.002}
+      }
+    ]
+  },
+  {
+    "name": "Zip-Lock Bags",
+    "codeName": "CARGO-PKG-ZLB-026",
+    "category": "POLYMER",
+    "quantity": 4380,
+    "weight_kg": 35.04,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"POLYETHYLENE_SHREDS": 0.008}
+      },
+      {
+        "process": "MELT_EXTRUSION",
+        "outputMaterials": {"POLYETHYLENE_FILAMENT": 0.0075}
+      },
+      {
+        "process": "PELLETIZING",
+        "outputMaterials": {"POLYETHYLENE": 0.007}
+      }
+    ]
+  },
+  {
+    "name": "Medical Bandages",
+    "codeName": "CREW-MEDICAL-MB-027",
+    "category": "FABRIC",
+    "quantity": 730,
+    "weight_kg": 14.6,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"BANDAGE_SHREDS": 0.02}
+      },
+      {
+        "process": "PULPING",
+        "outputMaterials": {"FIBER_PULP": 0.018}
+      },
+      {
+        "process": "FILTRATION",
+        "outputMaterials": {"COTTON": 0.01, "CELLULOSE_FIBER": 0.006, "ADHESIVE_RESIDUE": 0.002}
+      }
+    ]
+  },
+  {
+    "name": "Surgical Masks",
+    "codeName": "CREW-MEDICAL-SM-028",
+    "category": "FABRIC",
+    "quantity": 2920,
+    "weight_kg": 11.68,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"MASK_SHREDS": 0.004}
+      },
+      {
+        "process": "MELT_EXTRUSION",
+        "outputMaterials": {"POLYMER_FILAMENT": 0.0038}
+      },
+      {
+        "process": "FILTRATION",
+        "outputMaterials": {"POLYPROPYLENE": 0.0025, "POLYESTER": 0.0013}
+      }
+    ]
+  },
+  {
+    "name": "Food Tray",
+    "codeName": "CARGO-FOOD-FT-029",
+    "category": "POLYMER",
+    "quantity": 8760,
+    "weight_kg": 87.6,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"PLASTIC_SHREDS": 0.01}
+      },
+      {
+        "process": "MELT_EXTRUSION",
+        "outputMaterials": {"POLYMER_FILAMENT": 0.009}
+      },
+      {
+        "process": "MOLDING",
+        "outputMaterials": {"POLYPROPYLENE": 0.006, "POLYETHYLENE": 0.003}
+      }
+    ]
+  },
+  {
+    "name": "Plastic Utensils",
+    "codeName": "CREW-FOOD-PU-030",
+    "category": "POLYMER",
+    "quantity": 26280,
+    "weight_kg": 131.4,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"POLYPROPYLENE_SHREDS": 0.005}
+      },
+      {
+        "process": "MELT_EXTRUSION",
+        "outputMaterials": {"POLYPROPYLENE_FILAMENT": 0.0048}
+      },
+      {
+        "process": "MOLDING",
+        "outputMaterials": {"POLYPROPYLENE": 0.0045}
+      }
+    ]
+  },
+  {
+    "name": "Water Bottle",
+    "codeName": "CREW-HYGIENE-WB-031",
+    "category": "POLYMER",
+    "quantity": 240,
+    "weight_kg": 9.6,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"MIXED_PLASTIC_SHREDS": 0.04}
+      },
+      {
+        "process": "DENSITY_SEPARATION",
+        "outputMaterials": {"PET": 0.025, "POLYPROPYLENE": 0.015}
+      },
+      {
+        "process": "MELT_EXTRUSION",
+        "outputMaterials": {"PET_PELLETS": 0.023, "POLYPROPYLENE_PELLETS": 0.014}
+      }
+    ]
+  },
+  {
+    "name": "Insulation Blanket",
+    "codeName": "STRUCT-INSUL-IB-032",
+    "category": "COMPOSITE",
+    "quantity": 48,
+    "weight_kg": 48.0,
+    "recycleProcess": [
+      {
+        "process": "THERMAL_SEPARATION",
+        "outputMaterials": {"SEPARATED_LAYERS": 1.0}
+      },
+      {
+        "process": "MECHANICAL_RECYCLING",
+        "outputMaterials": {"POLYESTER": 0.5, "ALUMINUM_FOIL": 0.3, "ADHESIVE_RESIDUE": 0.2}
+      },
+      {
+        "process": "MELTING",
+        "outputMaterials": {"ALUMINUM": 0.28}
+      }
+    ]
+  },
+  {
+    "name": "Wire Insulation",
+    "codeName": "STRUCT-ELEC-WI-033",
+    "category": "POLYMER",
+    "quantity": 292,
+    "weight_kg": 43.8,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_STRIPPING",
+        "outputMaterials": {"INSULATION_STRIPS": 0.1, "COPPER": 0.05}
+      },
+      {
+        "process": "SHREDDING",
+        "outputMaterials": {"POLYMER_SHREDS": 0.095}
+      },
+      {
+        "process": "DENSITY_SEPARATION",
+        "outputMaterials": {"PVC": 0.06, "POLYETHYLENE": 0.035}
+      }
+    ]
+  },
+  {
+    "name": "Cable Ties",
+    "codeName": "CARGO-SECURE-CT-034",
+    "category": "POLYMER",
+    "quantity": 5840,
+    "weight_kg": 23.36,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"NYLON_SHREDS": 0.004}
+      },
+      {
+        "process": "MELT_EXTRUSION",
+        "outputMaterials": {"NYLON_FILAMENT": 0.0038}
+      },
+      {
+        "process": "PELLETIZING",
+        "outputMaterials": {"NYLON": 0.0036}
+      }
+    ]
+  },
+  {
+    "name": "Socks",
+    "codeName": "CREW-APPAREL-SK-035",
+    "category": "FABRIC",
+    "quantity": 480,
+    "weight_kg": 24.0,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"MIXED_FIBER_SHREDS": 0.05}
+      },
+      {
+        "process": "FIBER_SEPARATION",
+        "outputMaterials": {"COTTON": 0.025, "NYLON": 0.015, "POLYESTER": 0.01}
+      },
+      {
+        "process": "PULPING",
+        "outputMaterials": {"COTTON_PULP": 0.023}
+      }
+    ]
+  },
+  {
+    "name": "Underwear",
+    "codeName": "CREW-APPAREL-UW-036",
+    "category": "FABRIC",
+    "quantity": 480,
+    "weight_kg": 38.4,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"MIXED_FIBER_SHREDS": 0.08}
+      },
+      {
+        "process": "FIBER_SEPARATION",
+        "outputMaterials": {"COTTON": 0.05, "ELASTANE": 0.015, "NYLON": 0.015}
+      },
+      {
+        "process": "PULPING",
+        "outputMaterials": {"COTTON_PULP": 0.04, "CELLULOSE_FIBER": 0.01}
+      }
+    ]
+  },
+  {
+    "name": "Sleeping Bag",
+    "codeName": "CREW-SLEEP-SB-037",
+    "category": "FABRIC",
+    "quantity": 24,
+    "weight_kg": 36.0,
+    "recycleProcess": [
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "outputMaterials": {"POLYESTER_SHREDS": 1.5}
+      },
+      {
+        "process": "MELT_EXTRUSION",
+        "outputMaterials": {"POLYESTER_FILAMENT": 1.2, "NYLON_FILAMENT": 0.3}
+      },
+      {
+        "process": "FIBER_SPINNING",
+        "outputMaterials": {"NYLON": 0.25, "POLYESTER": 1.0, "POLYESTER_FILL": 0.25}
+      }
+    ]
+  }
+]
