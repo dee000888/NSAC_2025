@@ -13,14 +13,13 @@ export default function HabitatModule(): React.ReactElement {
 
   const { moduleName } = location.state;
 
-  const [smartBins, setSmartBins] = useState<(SmartBinSchema & {filledPercentage: number})[]>([]);
-  const [trashItems, setTrashItems] = useState<TrashItemSchema[]>([]);
+  const [smartBins, setSmartBins] = useState<(SmartBinSchema & { filledPercentage: number })[]>([]);
   const [consumableItems, setConsumableItems] = useState<ConsumableItemSchema[]>([]);
   const [selectedBinId, setSelectedBinId] = useState<string | null>(null);
 
   async function getBinData() {
     try {
-      const smartBins: (SmartBinSchema & {filledPercentage: number})[] = await window.electron.ipcRenderer.invoke("getSmartBins", moduleName);
+      const smartBins: (SmartBinSchema & { filledPercentage: number })[] = await window.electron.ipcRenderer.invoke("getSmartBins", moduleName);
       setSmartBins(smartBins);
     } catch (err) {
       console.error("Failed to fetch bin data:", err);
@@ -36,15 +35,6 @@ export default function HabitatModule(): React.ReactElement {
     }
   }
 
-  async function getTrashItemsForBin(binId: string) {
-    try {
-      const items = await window.electron.ipcRenderer.invoke("getTrashItemsByBin", binId);
-      setTrashItems(items);
-    } catch (err) {
-      console.error("Failed to load trash items:", err);
-    }
-  }
-
   useEffect(() => {
     getBinData();
     getConsumableItems();
@@ -52,19 +42,12 @@ export default function HabitatModule(): React.ReactElement {
 
   const handleSelectBin = async (bin: SmartBinSchema) => {
     setSelectedBinId(bin.binId);
-    await getTrashItemsForBin(bin.binId);
   };
 
   const handleBackToBins = () => {
     setSelectedBinId(null);
-    setTrashItems([]);
   };
 
-  const handleTrashItemsUpdated = async () => {
-    if (selectedBinId) {
-      await getTrashItemsForBin(selectedBinId);
-    }
-  };
 
   const handleConsumableItemsUpdated = async () => {
     await getConsumableItems();
@@ -103,7 +86,7 @@ export default function HabitatModule(): React.ReactElement {
 
       {/* Bins Display or Bin Details */}
       <div className="flex-1 h-full bg-gray-900 p-6 rounded-md">
-        
+
         {!selectedBinId ? (
           // All bin
           <>
@@ -118,10 +101,8 @@ export default function HabitatModule(): React.ReactElement {
           // Selected bin
           <BinDetails
             selectedBinId={selectedBinId}
-            trashItems={trashItems}
             consumableItems={consumableItems}
             onBack={handleBackToBins}
-            onTrashItemsUpdated={handleTrashItemsUpdated}
             onConsumableItemsUpdated={handleConsumableItemsUpdated}
           />
         )}

@@ -1,20 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ConsumableItemSchema, TrashItemSchema } from "@renderer/lib/types";
 import ConsumableItemsPopup from "./ConsumableItemsPopup";
 
 interface BinDetailsProps {
   selectedBinId: string;
-  trashItems: TrashItemSchema[];
   consumableItems: ConsumableItemSchema[];
   onBack: () => void;
-  onTrashItemsUpdated: () => void;
   onConsumableItemsUpdated: () => void;
 }
 
 export default function BinDetails(props: BinDetailsProps): React.ReactElement {
 
-  const { selectedBinId, trashItems, consumableItems, onBack, onTrashItemsUpdated, onConsumableItemsUpdated } = props;
+  const { selectedBinId, consumableItems, onBack, onConsumableItemsUpdated } = props;
+  
+  const [trashItems, setTrashItems] = useState<TrashItemSchema[]>([]);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  
+  async function getTrashItemsForBin(binId: string) {
+    try {
+      const items = await window.electron.ipcRenderer.invoke("getTrashItemsByBin", binId);
+      setTrashItems(items);
+    } catch (err) {
+      console.error("Failed to load trash items:", err);
+    }
+  }
+  
+  const handleTrashItemsUpdated = async () => {
+    if (selectedBinId) {
+      await getTrashItemsForBin(selectedBinId);
+    }
+  };
+  
+  useEffect(() => {
+    getTrashItemsForBin(selectedBinId);
+  }, [selectedBinId]);
 
   // Helper function to get consumable item details by codeName
   const getConsumableByCodeName = (codeName: string): ConsumableItemSchema | undefined => {
@@ -37,7 +56,7 @@ export default function BinDetails(props: BinDetailsProps): React.ReactElement {
       console.log(`Item ${item.name} successfully added to bin ${selectedBinId}`);
 
       // Notify parent components to refresh data
-      onTrashItemsUpdated();
+      handleTrashItemsUpdated();
       onConsumableItemsUpdated();
     } catch (err) {
       console.error("Failed to refresh items:", err);
@@ -96,7 +115,7 @@ export default function BinDetails(props: BinDetailsProps): React.ReactElement {
         onSelectItem={handleItemSelect}
         binId={selectedBinId}
       />
-      
+
     </>
   );
 }

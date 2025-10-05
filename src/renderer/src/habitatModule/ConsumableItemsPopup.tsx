@@ -60,7 +60,7 @@ export default function ConsumableItemsPopup({
     }
   }
 
-  if (!isOpen) return null;
+  if (!isOpen) return <></>;
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -92,19 +92,19 @@ export default function ConsumableItemsPopup({
                   <div
                     key={item.codeName}
                     className={`bg-gray-700 p-4 rounded-lg cursor-pointer transition-all ${isOutOfStock
-                        ? 'opacity-50 cursor-not-allowed'
-                        : 'hover:bg-gray-600 hover:scale-105'
+                      ? 'opacity-50 cursor-not-allowed'
+                      : 'hover:bg-gray-600 hover:scale-105'
                       }`}
                     onClick={() => !isOutOfStock && handleItemSelect(item)}
                   >
                     <div className="flex justify-between items-start mb-2">
                       <h3 className="font-semibold text-lg">{item.name}</h3>
                       <span className={`text-xs px-2 py-1 rounded ${item.category === 'FABRIC' ? 'bg-blue-600' :
-                          item.category === 'POLYMER' ? 'bg-purple-600' :
-                            item.category === 'GLASS' ? 'bg-green-600' :
-                              item.category === 'METAL' ? 'bg-yellow-600' :
-                                item.category === 'PAPER' ? 'bg-blue-500' :
-                                  'bg-gray-600'
+                        item.category === 'POLYMER' ? 'bg-purple-600' :
+                          item.category === 'GLASS' ? 'bg-green-600' :
+                            item.category === 'METAL' ? 'bg-yellow-600' :
+                              item.category === 'PAPER' ? 'bg-blue-500' :
+                                'bg-gray-600'
                         }`}>
                         {item.category}
                       </span>
