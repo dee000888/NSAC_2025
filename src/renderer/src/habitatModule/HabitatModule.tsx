@@ -16,19 +16,28 @@ export default function HabitatModule(): React.ReactElement {
   const [smartBins, setSmartBins] = useState<(SmartBinSchema & { filledPercentage: number })[]>([]);
   const [consumableItems, setConsumableItems] = useState<ConsumableItemSchema[]>([]);
   const [selectedBinId, setSelectedBinId] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   async function getBinData() {
     try {
+      setLoading(true);
+      console.log(`Fetching bins for module: ${moduleName}`);
       const smartBins: (SmartBinSchema & { filledPercentage: number })[] = await window.electron.ipcRenderer.invoke("getSmartBins", moduleName);
+      console.log(`Received ${smartBins.length} bins:`, smartBins);
       setSmartBins(smartBins);
     } catch (err) {
       console.error("Failed to fetch bin data:", err);
+      alert("Failed to fetch bin data. Please try again.");
+    } finally {
+      setLoading(false);
     }
   }
 
   async function getConsumableItems() {
     try {
+      console.log("Fetching consumable items");
       const items: ConsumableItemSchema[] = await window.electron.ipcRenderer.invoke("getConsumableItems");
+      console.log(`Received ${items.length} consumable items`);
       setConsumableItems(items);
     } catch (err) {
       console.error("Failed to fetch consumable items:", err);
@@ -41,6 +50,7 @@ export default function HabitatModule(): React.ReactElement {
   }, []);
 
   const handleSelectBin = async (bin: SmartBinSchema) => {
+    console.log(`Selected bin: ${bin.binId}, mobility: ${bin.mobility}`);
     setSelectedBinId(bin.binId);
   };
 
@@ -90,11 +100,25 @@ export default function HabitatModule(): React.ReactElement {
         {!selectedBinId ? (
           // All bin
           <>
-            <h2 className="text-2xl font-bold text-white mb-6">Smart Bins</h2>
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-2xl font-bold text-white">Smart Bins</h2>
+              <button
+                onClick={getBinData}
+                className="px-3 py-2 bg-gray-700 hover:bg-gray-600 rounded text-white text-sm"
+              >
+                🔄 Refresh Bins
+              </button>
+            </div>
             <div className="grid grid-cols-4 gap-4">
-              {smartBins.map((bin) => (
-                <SmartBinItem key={bin.binId} bin={bin} onClick={handleSelectBin} onAssigned={getBinData} />
-              ))}
+              {smartBins.length === 0 ? (
+                <div className="col-span-4 text-center py-12 text-gray-400">
+                  No bins found in this module. Try refreshing or assigning bins to this module.
+                </div>
+              ) : (
+                smartBins.map((bin) => (
+                  <SmartBinItem key={bin.binId} bin={bin} onClick={handleSelectBin} onAssigned={getBinData} />
+                ))
+              )}
             </div>
           </>
         ) : (

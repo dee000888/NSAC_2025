@@ -26,7 +26,9 @@ export default function ConsumableItemsPopup({
   async function fetchConsumableItems() {
     try {
       setLoading(true);
+      console.log("Fetching consumable items...");
       const consumableItems: ConsumableItemSchema[] = await window.electron.ipcRenderer.invoke("getConsumableItems");
+      console.log(`Received ${consumableItems.length} consumable items`);
       setItems(consumableItems);
     } catch (err) {
       console.error("Failed to fetch consumable items:", err);
@@ -42,11 +44,13 @@ export default function ConsumableItemsPopup({
     }
 
     try {
+      console.log(`Converting ${item.name} to trash for bin ${binId}`);
       const result = await window.electron.ipcRenderer.invoke("convertConsumableToTrash", {
         consumableItem: item,
         binId: binId,
         moduleName: "" // Will be ignored in the conversion logic
       });
+      console.log("Conversion result:", result);
 
       if (result.success) {
         alert(`Successfully added ${item.name} to bin ${binId}`);

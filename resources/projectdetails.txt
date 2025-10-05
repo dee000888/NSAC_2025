@@ -1,0 +1,77 @@
+SpaceTrash Hack: Revolutionizing Recycling on Mars
+
+    DetailsResourcesTeams
+
+Event
+2025 NASA Space Apps Challenge
+Difficulty
+Intermediate
+Summary
+
+During a hypothetical three-year mission to Mars and back, an eight-person crew would accumulate 12,600 kg of inorganic waste, or trash, including various packaging materials, textiles, and structural materials. This scenario creates a pressing need to recycle available materials, rather than execute the expensive and inefficient processes of transporting additional resources from Earth and/or sending trash back to Earth. As humans prepare to explore unknown worlds in the future, your challenge is to design sustainable systems that could manage, reuse, or recycle inorganic waste (“trash”) that is brought to and/or accumulated on the surface of Mars.
+Background
+
+On a Martian settlement, millions of miles from Earth, how will we take out the trash? Where does that trash go when it’s taken out? Space explorers will need to implement sanitation facilities or recycling plants to process waste, and keep new worlds as clean as possible. An astronaut’s most common waste items – fabrics, food packaging, structural elements, foam packaging, Ethylene-Vinyl Acetate (EVA) waste, and other packaging materials – cannot easily be recycled or reused in their original forms. And while the International Space Station can return waste to Earth for processing every few months, astronauts heading to Mars will not have the same luxury. Future missions to Mars will need to manage inorganic waste generated from the crew’s daily operations with the goal of reusing and recycling as much as possible, and throwing away as little as possible. Human exploration of Mars is in its infancy, so development of these systems has not been extensively researched. Cutting-edge, innovative solutions are needed to set the standard for space recycling for many missions to come. Such solutions will need to consider the characteristics of a mission’s landing site, and the various waste streams that will need to be recycled when astronauts live there to enable a sustainable, circular economy of commodities while promoting a tidy environment.
+Objectives
+
+Your challenge is to design a sustainable system that manages, reuses, and recycles the inorganic waste (“trash”) accumulated or generated on the surface of Mars by a hypothetical human mission landing at Jezero Crater. Can you develop a system that processes waste or items that have served their original purpose to address one or more of the following three scenarios?
+
+    Residence Renovations: Your crew has landed on Mars, and you need to inflate your habitat. Crew members need to spread out an inflatable habitat, then hook its corners to a 3-D cube structure that is used as a frame for the habitat when it inflates. Once the habitat is inflated and secured, the cube is no longer necessary and can be reused. Also, the foam packaging that housed the habitat and its frame are now available for reuse or recycling, as well. How can your crew put these materials to good use?
+        Potential Recyclable/Reusable Elements: aluminum structures and struts, polymer matrix composites with carbon fiber and plastic resin, foam packaging, bubble wrap and air cushion bags, and other materials you can identify.
+
+    Cosmic Celebrations: A member of your astronaut crew is celebrating a birthday, and you want to commemorate the experience with a party! However, party supplies are not available on Mars and the only option is to recycle and reuse materials from around the habitat. How will you use these materials to celebrate this event?
+        Potential Recyclable/Reusable Elements: clothing; washcloths; disinfectant wipes made with materials like cotton, cellulose, nylon, or polyester; plastic wrap for packaging food; rehydratable pouches; drink pouches; thermal pouches made with materials like polyester, polyethylene, aluminum, or nylon; and other materials you can identify.
+
+    Daring Discoveries: Your crew has been experimenting with extracting oxygen from the CO2 in the Mars atmosphere. After completing these experiments, many elements from your research are now available for reuse or recycling, including the devices used for extraction, and a surplus of carbon that is left over from the extraction. How can your crew put these elements to good use?
+        Potential Recyclable/Reusable Elements: EVA waste, filter/mesh instruments, carbon, resealable bags, nitrile gloves, and other materials you can identify.
+
+Think about how your project can focus on immediate recycling/reuse solutions for sustainability and in situ resource utilization, rather than the development of new materials, long-term product innovations, or methods for waste disposal. How can your project address maximizing resource recovery, minimizing inputs such as energy and water, and minimizing unusable outputs? A successful project could help create a waste management infrastructure for future planetary missions!
+Potential Considerations
+
+You may (but are not required to) consider the following:
+
+Visualizing Your Project
+
+    Your project can be visual (e.g., you could develop a design concept, drawing, or graphic to represent your system) with detailed descriptions of how it operates.
+    While project from participants at all skill levels are encouraged, use of artificial intelligence to create your visualization is not recommended.
+    On or around your visualization, don’t forget to indicate the waste inputs you used, and what outputs were usable versus unusable.
+    Your mission habitat is located at Jezero Crater, which will serve as a base location for your system to operate. Think about how your project could incorporate this landmark and its features into a visualization.
+
+Mission Conditions
+
+    The recycling systems you design may be located outside on the Martian surface and/or inside a pressurized habitat.
+    Your design does not have to make considerations for weather, dust, gravity, radiation, or other environmental conditions on Mars. However, you may provide information on how these items would be addressed, if you like.
+
+Potential Waste Materials: Consider incorporating the following types of waste materials into your project, but feel free to include others as well:
+
+    Fabrics (e.g., clothing, washcloths, disinfectant wipes made with materials like cotton, cellulose, nylon, polyester)
+    Food packaging (e.g., overwrap, rehydratable pouches, drink pouches, thermal pouches made with materials like polyester, polyethylene, aluminum, nylon)
+    Structural elements for temporary structures (e.g., aluminum structures, polymer matrix composites with carbon fiber and plastic resin)
+    Foam packaging (e.g., Zotek F30)
+    EVA waste (e.g., cargo transfer bags made of Nomex, nylon, polyester)
+    Other packaging and gloves (e.g., air cushions, bubble wrap, resealable bags, anti-static bubble wrap bags, Plastazote foam, nitrile gloves)
+
+Resources: Consider the following with regard to resources/commodities:
+
+    Electricity is available continuously to support the recycling process. Your project does not need to include electricity generation, transmission, or energy storage separate from the recycling process. For example, your solution does not need to include a separate standalone solar system with battery storage as a way to power the system.
+    Water is available for use in the recycling process, but could your project minimize the use of water?
+    Can your project convert or reuse outputs from the recycling process (e.g., waste heat, wastewater, etc.) as inputs to the recycling process to increase process efficiency?
+    Crew members are available to operate, monitor, and maintain the recycling system, if necessary. But crew members will be busy fulfilling other mission duties, so think about how you could minimize the time they devote to the recycling process.
+    Unlimited Martian regolith (defined as MGS-1 Mars Global Simulant—see Resources tab) is available for use on the Martian surface; your project could incorporate regolith with these characteristics.
+
+Potential End Products: Your project could produce a variety of end products including:
+
+    Utensils
+    Storage containers
+    Interior habitat outfitting
+    Various small tools
+    Any other useful products you can think of!
+
+Health/Safety Considerations:
+
+    It is not safe to burn or incinerate waste on the Martian surface.
+    Try to ensure that your project avoids the release or generation of any of the following:
+        Toxic emissions or other harmful/toxic byproducts
+        Per- and polyfluoroalkyl substances (PFAS)
+        Microplastics, including in any wastewater generated from a recycling or manufacturing process
+    If your project will result in generation or release of any of the above products, don’t forget to disclose that information in your submission.
