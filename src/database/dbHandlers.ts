@@ -1,6 +1,6 @@
 import { ipcMain } from "electron";
 import { connectDB } from "./database"
-import { HabitatModuleEnum, BinMobilityEnum, TrashCategoryEnum, TrashItemSchema } from "../renderer/src/lib/types";
+import { HabitatModuleEnum, BinMobilityEnum, TrashItemSchema } from "../renderer/src/lib/types";
 
 type DbCollections = "smartbin" | "trashitem" | "consumableitem" | "manufacturableitem" | "recycledmaterial" | "monthlysummary";
 
@@ -152,7 +152,7 @@ export default function registerDbHandlers() {
         const consumableItems = await db.collection("consumableitem").find({}).limit(5).toArray();
 
         if (consumableItems.length > 0) {
-          const sampleTrashItems = [];
+          const sampleTrashItems: any[] = [];
 
           // Create 3 sample trash items
           for (let i = 0; i < 3; i++) {
@@ -166,7 +166,7 @@ export default function registerDbHandlers() {
             });
           }
 
-          await db.collection("trashitem").insertMany(sampleTrashItems);
+          await db.collection("trashitem").insertMany(sampleTrashItems as any[]);
           console.log(`Created ${sampleTrashItems.length} sample trash items for bin ${binId}`);
 
           // Return the newly created items
@@ -411,7 +411,7 @@ export default function registerDbHandlers() {
     });
 
     // Update monthly summary
-    const monthlySummaryKey = `${month}-${year}`;
+    // const monthlySummaryKey = `${month}-${year}`;
     const existingSummary = await db.collection("monthlysummary").findOne({ month, year });
 
     if (existingSummary) {
@@ -488,7 +488,11 @@ export default function registerDbHandlers() {
           }
         } catch (err) {
           console.error("Failed to initialize manufacturableitem collection:", err);
-          console.error(err.stack);
+          if (err instanceof Error) {
+            console.error(err.stack);
+          } else {
+            console.error(err);
+          }
 
           // If there's an error reading the file, create a few sample items
           const sampleItems = [
@@ -743,7 +747,7 @@ export default function registerDbHandlers() {
       return {
         success: false,
         message: "Error accessing material database",
-        error: err.message
+        error: err instanceof Error ? err.message : String(err)
       };
     }
 
@@ -805,7 +809,7 @@ export default function registerDbHandlers() {
       return {
         success: false,
         message: "Error updating material database",
-        error: err.message
+        error: err instanceof Error ? err.message : String(err)
       };
     }
   });

@@ -127,8 +127,7 @@ async function initializeCollectionsWithData(): Promise<void> {
         const consumableItems = await db.collection('consumableitem').find({}).limit(10).toArray();
 
         if (bins.length > 0 && consumableItems.length > 0) {
-          const sampleTrashItems = [];
-
+          const sampleTrashItems: any[] = [];
           // Create sample trash items for each bin
           for (const bin of bins) {
             // Add 2-5 random trash items to each bin

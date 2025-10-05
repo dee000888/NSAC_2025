@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import marsImage from "../assets/images/mars.jpg";
 import HabitatModuleSelecter from "./HabitatModuleSelecter";
 import MainInfomation from "@renderer/jezero/MainInfomation";
@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 export default function Jezero(): React.ReactElement {
 
   const navigate = useNavigate();
-  const [binStatusVisible, setBinStatusVisible] = useState(true);
 
   const defaultInformation = <div>
     <div className="flex gap-2 mb-3">
@@ -18,13 +17,7 @@ export default function Jezero(): React.ReactElement {
         onClick={() => navigate("/recyclestation")}
         className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg shadow-lg transition-colors"
       >
-        🗑️ Recycle Station
-      </button>
-      <button
-        onClick={() => setBinStatusVisible(!binStatusVisible)}
-        className="px-4 py-3 bg-gray-600 hover:bg-gray-500 text-white font-semibold rounded-lg shadow-lg transition-colors"
-      >
-        {binStatusVisible ? "Hide Bin Status" : "Show Bin Status"}
+        Recycle Station
       </button>
     </div>
     <pre className="mb-2">
@@ -100,11 +93,10 @@ export default function Jezero(): React.ReactElement {
       </MainInfomation>
 
       {/* Bin Status Overview */}
-      {binStatusVisible && (
-        <div className="absolute top-4 right-4 w-80 z-10">
-          <BinStatusOverview />
-        </div>
-      )}
+      <div className="absolute top-4 right-4 w-80 z-10">
+        <BinStatusOverview />
+      </div>
+
 
       {/* Habitat selector */}
       <div>

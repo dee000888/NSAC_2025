@@ -37,7 +37,7 @@ export default function ModuleStatistics({ moduleName }: { moduleName: HabitatMo
       const status = await window.electron.ipcRenderer.invoke("getBinFullnessStatus");
 
       // Filter bins for this module only
-      const moduleBins = Object.values(status).filter(bin => bin.moduleName === moduleName);
+      const moduleBins = Object.values(status).filter((bin: any) => bin.moduleName === moduleName);
 
       // Count bins by fullness status
       const binStats = {

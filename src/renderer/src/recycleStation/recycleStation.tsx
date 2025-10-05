@@ -9,7 +9,6 @@ import {
   RecycleProcessEnum,
   ManuFactoryApplicationEnum,
 } from "@renderer/lib/types";
-import TrashTransferVisualization from "./TrashTransferVisualization";
 import { HabitatModuleEnum } from "@renderer/lib/types";
 import { formatItemName, formatCategoryName, formatCamelCaseToTitleCase, formatApplicationName, formatProcessName, formatRawMaterial } from "@renderer/lib/formatUtils";
 
@@ -82,7 +81,7 @@ export default function RecycleStation(): React.ReactElement {
   const [selectedProcess, setSelectedProcess] = useState<RecycleProcessEnum | null>(null);
   const [selectedApplication, setSelectedApplication] = useState<ManuFactoryApplicationEnum | "ALL">("ALL");
   const [monthlySummary, setMonthlySummary] = useState<any[]>([]);
-  const [activeTab, setActiveTab] = useState<'recycling' | 'manufacturing' | 'analytics' | 'transfers'>('recycling');
+  const [activeTab, setActiveTab] = useState<'recycling' | 'manufacturing' | 'analytics'>('recycling');
 
   useEffect(() => {
     fetchAllData();
@@ -154,49 +153,49 @@ export default function RecycleStation(): React.ReactElement {
   }
 
   // This function is used by the fetchAllData method
-  function calculateAvailableMaterials(trashItems: TrashItemSchema[], consumableItems: ConsumableItemSchema[]) {
-    console.log("Calculating available materials from", trashItems.length, "trash items");
-    const materials: { [key: string]: number } = {};
+  // function calculateAvailableMaterials(trashItems: TrashItemSchema[], consumableItems: ConsumableItemSchema[]) {
+  //   console.log("Calculating available materials from", trashItems.length, "trash items");
+  //   const materials: { [key: string]: number } = {};
 
-    // Create a map of codeName to consumable item for quick lookup
-    const codeNameToItem = new Map<string, ConsumableItemSchema>();
-    consumableItems.forEach(item => {
-      codeNameToItem.set(item.codeName, item);
-    });
+  //   // Create a map of codeName to consumable item for quick lookup
+  //   const codeNameToItem = new Map<string, ConsumableItemSchema>();
+  //   consumableItems.forEach(item => {
+  //     codeNameToItem.set(item.codeName, item);
+  //   });
 
-    // Process each trash item to get recycled materials
-    trashItems.forEach(trashItem => {
-      const consumableItem = codeNameToItem.get(trashItem.codeName);
-      if (consumableItem && consumableItem.recycleProcess) {
-        // Calculate the weight per item
-        const weightPerItem = consumableItem.weight_kg;
+  //   // Process each trash item to get recycled materials
+  //   trashItems.forEach(trashItem => {
+  //     const consumableItem = codeNameToItem.get(trashItem.codeName);
+  //     if (consumableItem && consumableItem.recycleProcess) {
+  //       // Calculate the weight per item
+  //       const weightPerItem = consumableItem.weight_kg;
 
-        // Process each recycling step
-        if (Array.isArray(consumableItem.recycleProcess)) {
-          consumableItem.recycleProcess.forEach(process => {
-            if (process.outputMaterials) {
-              Object.entries(process.outputMaterials).forEach(([material, outputRatioValue]) => {
-                // Cast the outputRatio to a number to avoid type error
-                const outputRatio = Number(outputRatioValue);
-                const materialWeight = trashItem.quantity * weightPerItem * outputRatio;
-                materials[material] = (materials[material] || 0) + materialWeight;
-              });
-            }
-          });
-        } else if (consumableItem.recycleProcess.outputMaterials) {
-          // Handle single process case
-          Object.entries(consumableItem.recycleProcess.outputMaterials).forEach(([material, outputRatioValue]) => {
-            const outputRatio = Number(outputRatioValue);
-            const materialWeight = trashItem.quantity * weightPerItem * outputRatio;
-            materials[material] = (materials[material] || 0) + materialWeight;
-          });
-        }
-      }
-    });
+  //       // Process each recycling step
+  //       if (Array.isArray(consumableItem.recycleProcess)) {
+  //         consumableItem.recycleProcess.forEach(process => {
+  //           if (process.outputMaterials) {
+  //             Object.entries(process.outputMaterials).forEach(([material, outputRatioValue]) => {
+  //               // Cast the outputRatio to a number to avoid type error
+  //               const outputRatio = Number(outputRatioValue);
+  //               const materialWeight = trashItem.quantity * weightPerItem * outputRatio;
+  //               materials[material] = (materials[material] || 0) + materialWeight;
+  //             });
+  //           }
+  //         });
+  //       } else if (consumableItem.recycleProcess.outputMaterials) {
+  //         // Handle single process case
+  //         Object.entries(consumableItem.recycleProcess.outputMaterials).forEach(([material, outputRatioValue]) => {
+  //           const outputRatio = Number(outputRatioValue);
+  //           const materialWeight = trashItem.quantity * weightPerItem * outputRatio;
+  //           materials[material] = (materials[material] || 0) + materialWeight;
+  //         });
+  //       }
+  //     }
+  //   });
 
-    console.log("Available materials calculated:", materials);
-    return materials;
-  }
+  //   console.log("Available materials calculated:", materials);
+  //   return materials;
+  // }
 
   function calculateManufacturableAvailability(availableMaterials: { [key: string]: number }) {
     if (!manufacturableItems || manufacturableItems.length === 0) {
@@ -258,16 +257,16 @@ export default function RecycleStation(): React.ReactElement {
     }
   }
 
-  async function handleDumpToInstation(sourceBinId: string) {
-    try {
-      const result = await window.electron.ipcRenderer.invoke("dumpBinToInstation", { sourceBinId });
-      console.log(result.message);
-      // Refresh all data
-      fetchAllData();
-    } catch (err) {
-      console.error("Failed to dump bin to instation:", err);
-    }
-  }
+  // async function handleDumpToInstation(sourceBinId: string) {
+  //   try {
+  //     const result = await window.electron.ipcRenderer.invoke("dumpBinToInstation", { sourceBinId });
+  //     console.log(result.message);
+  //     // Refresh all data
+  //     fetchAllData();
+  //   } catch (err) {
+  //     console.error("Failed to dump bin to instation:", err);
+  //   }
+  // }
 
   async function handleTrashSelection(item: TrashItemSchema) {
     const isSelected = selectedItems.some(i => i.trashId === item.trashId);
@@ -395,7 +394,7 @@ export default function RecycleStation(): React.ReactElement {
             Recycling Center
           </button>
           <button
-            className={`px-4 py-2 mr-2 ${activeTab === 'manufacturing'
+            className={`px-4 py-2 ${activeTab === 'manufacturing'
               ? 'bg-green-600 text-white rounded-t-md'
               : 'text-gray-400 hover:text-white'
               }`}
@@ -412,15 +411,7 @@ export default function RecycleStation(): React.ReactElement {
           >
             Recycling Analytics
           </button>
-          <button
-            className={`px-4 py-2 ${activeTab === 'transfers'
-              ? 'bg-amber-600 text-white rounded-t-md'
-              : 'text-gray-400 hover:text-white'
-              }`}
-            onClick={() => setActiveTab('transfers')}
-          >
-            Transfer Flow
-          </button>
+
         </div>
 
         {loading ? (
@@ -574,7 +565,7 @@ export default function RecycleStation(): React.ReactElement {
                                 <div>Bin: {item.binId}</div>
                                 <div>Code: {item.codeName}</div>
                                 <div>Quantity: {item.quantity}</div>
-                                <div>Weight: {consumableInfo?.weight_kg.toFixed(2) || '?'} kg</div> 
+                                <div>Weight: {consumableInfo?.weight_kg.toFixed(2) || '?'} kg</div>
                               </div>
                               {isSelected && (
                                 <div className="mt-2 text-xs text-blue-300">
@@ -1072,14 +1063,7 @@ export default function RecycleStation(): React.ReactElement {
               </div>
             )}
 
-            {/* Transfer Flow Tab */}
-            {activeTab === 'transfers' && (
-              <div className="grid grid-cols-12 gap-6">
-                <div className="col-span-12">
-                  <TrashTransferVisualization />
-                </div>
-              </div>
-            )}
+
           </>
         )}
       </div>

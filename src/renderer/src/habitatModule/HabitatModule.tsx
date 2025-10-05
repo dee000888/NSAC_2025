@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import moduleImage from "../assets/images/(modules)/circular-module_1-Photoroom.png";
-import { SmartBinSchema, ConsumableItemSchema, TrashItemSchema } from "@renderer/lib/types";
+import { SmartBinSchema, ConsumableItemSchema } from "@renderer/lib/types";
 import SmartBinItem from "./SmartBinItem";
 import BinDetails from "./BinDetails";
 import ModuleStatistics from "./ModuleStatistics";
@@ -16,11 +16,9 @@ export default function HabitatModule(): React.ReactElement {
   const [smartBins, setSmartBins] = useState<(SmartBinSchema & { filledPercentage: number })[]>([]);
   const [consumableItems, setConsumableItems] = useState<ConsumableItemSchema[]>([]);
   const [selectedBinId, setSelectedBinId] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
 
   async function getBinData() {
     try {
-      setLoading(true);
       console.log(`Fetching bins for module: ${moduleName}`);
       const smartBins: (SmartBinSchema & { filledPercentage: number })[] = await window.electron.ipcRenderer.invoke("getSmartBins", moduleName);
       console.log(`Received ${smartBins.length} bins:`, smartBins);
@@ -28,8 +26,6 @@ export default function HabitatModule(): React.ReactElement {
     } catch (err) {
       console.error("Failed to fetch bin data:", err);
       alert("Failed to fetch bin data. Please try again.");
-    } finally {
-      setLoading(false);
     }
   }
 
@@ -67,7 +63,7 @@ export default function HabitatModule(): React.ReactElement {
     <div className="w-full min-h-screen bg-red-900 flex relative p-8 gap-2">
 
       {/* Module Info */}
-      <div className="w-1/3 h-full bg-gray-800 text-white p-6 flex flex-col rounded-md">
+      <div className="w-1/3  bg-gray-800 text-white p-6 flex flex-col rounded-md">
 
         {/* Module Name */}
         <h2 className="text-2xl font-bold mb-4 flex gap-4">
@@ -95,7 +91,7 @@ export default function HabitatModule(): React.ReactElement {
       </div>
 
       {/* Bins Display or Bin Details */}
-      <div className="flex-1 h-full bg-gray-900 p-6 rounded-md">
+      <div className="flex-1 min-h-full bg-gray-900 p-6 rounded-md">
 
         {!selectedBinId ? (
           // All bin

@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { HabitatModuleEnum, SmartBinSchema } from "@renderer/lib/types";
-import { formatItemName, formatCategoryName, formatMobilityType, formatModuleName } from "@renderer/lib/formatUtils";
+import { formatItemCode, formatMobilityType, formatModuleName } from "@renderer/lib/formatUtils";
 
 type SmartBinProps = {
   bin: SmartBinSchema & { filledPercentage: number };
@@ -131,12 +131,12 @@ export default function SmartBinItem(props: SmartBinProps): React.ReactElement {
       </button>
 
       {isAssignOpen && (
-        <div className="absolute inset-0 bg-black/80 flex items-center justify-center p-4 z-10 rounded-lg backdrop-blur-sm">
+        <div className="w-64 z-100 absolute inset-0 bg-black/80 flex items-center justify-center p-4 z-10 rounded-lg backdrop-blur-sm">
           <div className="bg-gray-800 w-full max-w-sm rounded-lg p-6 border border-blue-500/50 shadow-lg">
             <div className="text-white font-semibold text-lg mb-2">Assign to Module</div>
             <div className="flex items-center space-x-2 text-xs text-gray-300 mb-4 pb-2 border-b border-gray-700">
               <span className="bg-blue-600 rounded-full w-5 h-5 flex items-center justify-center">🗑️</span>
-              <span>Bin ID: {bin.binId}</span>
+              <span>Bin ID: {formatItemCode(bin.binId)}</span>
             </div>
 
             <div className="mb-2 text-sm text-gray-300">Select destination module:</div>
