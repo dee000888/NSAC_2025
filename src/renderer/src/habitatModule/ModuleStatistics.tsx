@@ -108,7 +108,7 @@ export default function ModuleStatistics({ moduleName }: { moduleName: HabitatMo
         <div className="bg-gray-700 p-3 rounded-lg">
           <div className="flex justify-between mb-2">
             <span>Total Weight</span>
-            <span className="text-yellow-400">{summary?.totalWeight} kg</span>
+            <span className="text-yellow-400">{totalWeight.toFixed(3)} kg</span>
           </div>
         </div>
 
