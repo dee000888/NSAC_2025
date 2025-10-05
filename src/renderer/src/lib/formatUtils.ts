@@ -4,14 +4,16 @@
  */
 
 /**
- * Converts an uppercase string with underscores to title case
+ * Converts an uppercase string with underscores or spaces to title case
  * Example: "FIBER_SHREDS" -> "Fiber Shreds"
+ *          "NOTE BOOK"    -> "Note Book"
+ *          "ALUMINIUM"    -> "Aluminium"
  */
 export function formatEnumToTitleCase(text: string): string {
   if (!text) return '';
-
   return text
-    .split('_')
+    .replace(/[_\s]+/g, ' ') // Replace underscores and multiple spaces with single space
+    .split(' ')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(' ');
 }

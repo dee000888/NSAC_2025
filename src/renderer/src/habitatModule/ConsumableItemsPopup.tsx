@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ConsumableItemSchema } from "@renderer/lib/types";
+import { formatCategoryName, formatItemName } from "@renderer/lib/formatUtils";
 
 interface ConsumableItemsPopupProps {
   isOpen: boolean;
@@ -102,7 +103,7 @@ export default function ConsumableItemsPopup({
                     onClick={() => !isOutOfStock && handleItemSelect(item)}
                   >
                     <div className="flex justify-between items-start mb-2">
-                      <h3 className="font-semibold text-lg">{item.name}</h3>
+                      <h3 className="font-semibold text-lg">{formatItemName(item.name)}</h3>
                       <span className={`text-xs px-2 py-1 rounded ${item.category === 'FABRIC' ? 'bg-blue-600' :
                         item.category === 'POLYMER' ? 'bg-purple-600' :
                           item.category === 'GLASS' ? 'bg-green-600' :
@@ -110,7 +111,7 @@ export default function ConsumableItemsPopup({
                               item.category === 'PAPER' ? 'bg-blue-500' :
                                 'bg-gray-600'
                         }`}>
-                        {item.category}
+                        {formatCategoryName(item.category)}
                       </span>
                     </div>
 
@@ -123,7 +124,7 @@ export default function ConsumableItemsPopup({
 
                     {isOutOfStock && (
                       <div className="text-xs text-red-400 font-semibold mt-2">
-                        OUT OF STOCK
+                        Out of Stock
                       </div>
                     )}
 

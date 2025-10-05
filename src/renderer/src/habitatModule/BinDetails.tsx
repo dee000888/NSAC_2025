@@ -177,7 +177,7 @@ export default function BinDetails(props: BinDetailsProps): React.ReactElement {
                 <div className="text-xs">Category: {formatCategoryName(consumableInfo?.category || 'UNKNOWN')}</div>
                 <div className="text-xs">Quantity: {item.quantity}</div>
                 <div className="text-xs">Total Weight: {formatWeight(totalWeight)}</div>
-                <div className="text-xs text-blue-400 mt-1">Code: {item.codeName}</div>
+                <div className="text-xs text-blue-400 mt-1">Code: {formatItemName(item.codeName)}</div>
               </div>
             );
           })}

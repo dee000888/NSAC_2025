@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { HabitatModuleEnum, SmartBinSchema } from "@renderer/lib/types";
-import { formatMobilityType, formatModuleName } from "@renderer/lib/formatUtils";
+import { formatItemName, formatCategoryName, formatMobilityType, formatModuleName } from "@renderer/lib/formatUtils";
 
 type SmartBinProps = {
   bin: SmartBinSchema & { filledPercentage: number };

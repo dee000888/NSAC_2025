@@ -11,6 +11,7 @@ import {
 } from "@renderer/lib/types";
 import TrashTransferVisualization from "./TrashTransferVisualization";
 import { HabitatModuleEnum } from "@renderer/lib/types";
+import { formatItemName, formatCategoryName, formatCamelCaseToTitleCase, formatApplicationName, formatProcessName, formatRawMaterial } from "@renderer/lib/formatUtils";
 
 interface TrashSummary {
   binCount: number;
@@ -44,14 +45,14 @@ const MaterialsCard = ({ materials, title, showTotal = false }: MaterialsCardPro
       <div className="space-y-2">
         {Object.entries(materials).map(([material, weight]) => (
           <div key={material} className="flex justify-between">
-            <span className="text-gray-300">{material}</span>
+            <span className="text-gray-300">{formatRawMaterial(material)}</span>
             <span className="text-white font-medium">{weight.toFixed(3)} kg</span>
           </div>
         ))}
 
         {showTotal && Object.keys(materials).length > 0 && (
           <div className="flex justify-between border-t border-gray-700 pt-2 mt-2">
-            <span className="text-gray-300 font-medium">TOTAL</span>
+            <span className="text-gray-300 font-medium">Total</span>
             <span className="text-white font-medium">{totalWeight.toFixed(3)} kg</span>
           </div>
         )}
@@ -447,10 +448,10 @@ export default function RecycleStation(): React.ReactElement {
                         >
                           <div className="flex items-center justify-between">
                             <div>
-                              <div className="font-medium">{bin.binId}</div>
-                              <div className="text-xs text-gray-300">
+                              <div className="font-medium">{formatCamelCaseToTitleCase(bin.binId)}</div>
+                              {/*<div className="text-xs text-gray-300">
                                 {bin.mobility} - {bin.moduleName}
-                              </div>
+                              </div>*/}
                             </div>
                             <div className={`px-2 py-1 text-xs rounded ${bin.mobility === 'INSTATION' ? 'bg-green-600' : 'bg-blue-600'
                               }`}>
@@ -479,7 +480,7 @@ export default function RecycleStation(): React.ReactElement {
                             }`}
                           onClick={() => setSelectedCategory(category as TrashCategoryEnum)}
                         >
-                          {category}
+                          {formatCategoryName(category)}
                         </div>
                       ))}
                     </div>
@@ -502,7 +503,7 @@ export default function RecycleStation(): React.ReactElement {
                             }`}
                           onClick={() => setSelectedProcess(process as RecycleProcessEnum)}
                         >
-                          {process.replace(/_/g, ' ')}
+                          {formatCategoryName(process.replace(/_/g, ' '))}
                         </div>
                       ))}
                     </div>
@@ -555,25 +556,25 @@ export default function RecycleStation(): React.ReactElement {
                             >
                               <div className="flex justify-between items-start mb-1">
                                 <div>
-                                  <div className="font-medium text-sm">{consumableInfo?.name || item.codeName}</div>
-                                  <div className="text-xs text-gray-300">ID: {item.trashId}</div>
+                                  <div className="font-medium text-sm">{formatItemName(consumableInfo?.name || item.codeName)}</div>
+                                  {/*<div className="text-xs text-gray-300">ID: {item.trashId}</div>*/}
                                 </div>
                                 <div className={`px-2 py-1 text-xs rounded ${consumableInfo?.category === 'FABRIC' ? 'bg-blue-600' :
-                                  consumableInfo?.category === 'PLASTIC' || consumableInfo?.category === 'POLYMER' ? 'bg-purple-600' :
+                                  consumableInfo?.category === 'POLYMER' ? 'bg-purple-600' :
                                     consumableInfo?.category === 'GLASS' ? 'bg-green-600' :
                                       consumableInfo?.category === 'METAL' ? 'bg-yellow-600' :
                                         consumableInfo?.category === 'PAPER' ? 'bg-amber-600' :
                                           consumableInfo?.category === 'COMPOSITE' ? 'bg-red-600' :
                                             'bg-gray-600'
                                   }`}>
-                                  {consumableInfo?.category || 'UNKNOWN'}
+                                  {formatCategoryName(consumableInfo?.category || 'UNKNOWN')}
                                 </div>
                               </div>
                               <div className="grid grid-cols-2 text-xs text-gray-300 mt-2">
+                                <div>Bin: {item.binId}</div>
                                 <div>Code: {item.codeName}</div>
                                 <div>Quantity: {item.quantity}</div>
-                                <div>Weight: {consumableInfo?.weight_kg.toFixed(2) || '?'} kg</div>
-                                <div>Bin: {item.binId}</div>
+                                <div>Weight: {consumableInfo?.weight_kg.toFixed(2) || '?'} kg</div> 
                               </div>
                               {isSelected && (
                                 <div className="mt-2 text-xs text-blue-300">
@@ -635,7 +636,7 @@ export default function RecycleStation(): React.ReactElement {
                         <h3 className="text-sm font-medium text-gray-300 pt-2 border-t border-gray-700">Weight by Category:</h3>
                         {Object.entries(summary.categoryWeights).map(([category, weight]) => (
                           <div key={category} className="flex justify-between">
-                            <span className="text-gray-300">{category}:</span>
+                            <span className="text-gray-300">{formatCategoryName(category)}:</span>
                             <span>{weight.toFixed(2)} kg</span>
                           </div>
                         ))}
@@ -670,7 +671,7 @@ export default function RecycleStation(): React.ReactElement {
                             }`}
                           onClick={() => setSelectedApplication(app as ManuFactoryApplicationEnum)}
                         >
-                          {app}
+                          {formatApplicationName(app)}
                         </div>
                       ))}
                     </div>
@@ -724,7 +725,7 @@ export default function RecycleStation(): React.ReactElement {
                               <div>
                                 <div className="font-medium text-lg">{item.itemName}</div>
                                 <div className="text-xs text-gray-300">
-                                  Process: {typeof item.manufactureProcess.process === 'string' ? item.manufactureProcess.process.replace(/_/g, ' ') : item.manufactureProcess.process}
+                                  Process: {typeof item.manufactureProcess.process === 'string' ? formatProcessName(item.manufactureProcess.process.replace(/_/g, ' ')) : formatProcessName(item.manufactureProcess.process)}
                                 </div>
                               </div>
                               <div className={`px-2 py-1 text-xs rounded ${item.application === 'RENOVATION' ? 'bg-amber-600' :
@@ -732,7 +733,7 @@ export default function RecycleStation(): React.ReactElement {
                                   item.application === 'DISCOVERY' ? 'bg-blue-600' :
                                     'bg-gray-600'
                                 }`}>
-                                {item.application}
+                                {formatApplicationName(item.application)}
                               </div>
                             </div>
 
@@ -745,7 +746,7 @@ export default function RecycleStation(): React.ReactElement {
 
                                 return (
                                   <div key={material} className="flex justify-between">
-                                    <span>{material}:</span>
+                                    <span>{formatRawMaterial(material)}:</span>
                                     <span className={isMissing ? 'text-red-400' : 'text-green-400'}>
                                       {available.toFixed(2)}/{amountNum.toFixed(2)} kg
                                     </span>
@@ -921,7 +922,7 @@ export default function RecycleStation(): React.ReactElement {
                               return (
                                 <div key={category} className="mb-3">
                                   <div className="flex justify-between mb-1">
-                                    <span>{category}</span>
+                                    <span>{formatCategoryName(category)}</span>
                                     <span className={rate >= 75 ? 'text-green-400' : rate >= 50 ? 'text-yellow-400' : 'text-red-400'}>
                                       {rate.toFixed(1)}% ({recycled}/{collected})
                                     </span>
@@ -1046,7 +1047,7 @@ export default function RecycleStation(): React.ReactElement {
                                 <ul className="list-disc pl-5 space-y-2 text-gray-300">
                                   {lowestCategory.slice(0, 3).map(({ category, rate }) => (
                                     <li key={category} className="text-yellow-400">
-                                      Improve {category} recycling (currently at {rate.toFixed(1)}%)
+                                      Improve {formatCategoryName(category)} recycling (currently at {rate.toFixed(1)}%)
                                     </li>
                                   ))}
                                   <li className="pt-2">
