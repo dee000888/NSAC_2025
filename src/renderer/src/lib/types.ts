@@ -95,10 +95,12 @@ export type ConsumableItemSchema = {
 
 export type ManufacturableItemSchema = {
   itemName: string;
-  rawMaterials: {
-    [key: string]: number;
+  manufactureProcess: {
+    process: ManufactureProcessEnum,
+    rawMaterials: {
+      [key: string]: number;
+    };
   };
-  manufactureProcess: ManufactureProcessEnum[];
   application: ManuFactoryApplicationEnum;
 }
 

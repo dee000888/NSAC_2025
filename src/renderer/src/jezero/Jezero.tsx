@@ -1,14 +1,14 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import marsImage from "../assets/images/mars.jpg";
 import HabitatModuleSelecter from "./HabitatModuleSelecter";
 import MainInfomation from "@renderer/jezero/MainInfomation";
 import residenceImage from "../assets/images/residence.png";
-import { ResidenceContext } from "@renderer/contexts/ResidenceContext";
 import { HabitatModuleEnum } from "@renderer/lib/types";
+import { useNavigate } from "react-router-dom";
 
 export default function Jezero(): React.ReactElement {
   
-  const residenceContext = useContext(ResidenceContext);
+  const navigate = useNavigate();
   
   const defaultInformation = <div>
     <pre className="mb-2">
@@ -32,21 +32,21 @@ export default function Jezero(): React.ReactElement {
       description:
         "The Living Space Module is a self-sustaining habitat \ndesigned to support human life on Mars.",
       coords: { top: 120, right: 343 },
-      onClick: () => residenceContext?.setSelectedScene(HabitatModuleEnum.LivingSpaceModule),
+      onClick: () => navigate("/habitatmodule", { state: { moduleName: HabitatModuleEnum.LivingSpaceModule }}),
     },
     StorageModule: {
       title: "Storage Module",
       description:
         "The Storage Module provides secure containment for food, \ntools, and essential supplies needed for daily survival.",
       coords: { top: 197, right: 205 },
-      onClick: () => residenceContext?.setSelectedScene(HabitatModuleEnum.StorageModule),
+      onClick: () => navigate("/habitatmodule", { state: { moduleName: HabitatModuleEnum.StorageModule }}),
     },
     SurgicalModule: {
       title: "Surgical Module",
       description:
         "The Surgical Module serves as a medical bay equipped \nfor surgeries, treatments, and emergency healthcare on Mars.",
       coords: { top: 197, right: 480 },
-      onClick: () => residenceContext?.setSelectedScene(HabitatModuleEnum.SurgicalModule),
+      onClick: () => navigate("/habitatmodule", { state: { moduleName: HabitatModuleEnum.SurgicalModule }}),
     },
   
     RecyclingModule: {
@@ -54,28 +54,23 @@ export default function Jezero(): React.ReactElement {
       description:
         "The Recycling Module processes waste materials into reusable \nresources, ensuring sustainability within the habitat.",
       coords: { top: 435, right: 343 },
-      onClick: () => residenceContext?.setSelectedScene(HabitatModuleEnum.RecyclingModule),
+      onClick: () => navigate("/habitatmodule", { state: { moduleName: HabitatModuleEnum.RecyclingModule }}),
     },
     LabModule: {
       title: "Lab Module",
       description:
         "The Lab Module enables scientific experiments, material testing, \nand research critical for long-term missions.",
       coords: { top: 360, right: 480 },
-      onClick: () => residenceContext?.setSelectedScene(HabitatModuleEnum.LabModule),
+      onClick: () => navigate("/habitatmodule", { state: { moduleName: HabitatModuleEnum.LabModule }}),
     },
     PlantationModule: {
       title: "Plantation Module",
       description:
         "The Plantation Module supports food production and \noxygen generation through hydroponics and controlled agriculture.",
       coords: { top: 360, right: 205 },
-      onClick: () => residenceContext?.setSelectedScene(HabitatModuleEnum.PlantationModule),
+      onClick: () => navigate("/habitatmodule", { state: { moduleName: HabitatModuleEnum.PlantationModule }}),
     },
   };
-
-
-  if (!residenceContext) {
-    return <div>Loading...</div>;
-  }
   
   return (
     <div

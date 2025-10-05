@@ -1,5 +1,6 @@
 import { ipcMain } from "electron";
 import { connectDB } from "./database"
+import { HabitatModuleEnum } from "../renderer/src/lib/types";
 
 type DbCollections = "smartbin" | "trashitem" | "consumableitem";
 
@@ -137,6 +138,58 @@ export default function registerDbHandlers() {
       totalItems: trashItems.length,
       totalWeight: trashItems.reduce((sum, item) => sum + item.weight, 0),
       categoryWeights
+    };
+  });
+
+  ipcMain.handle("dumpBinToInstation", async (_event, { sourceBinId }) => {
+    const db = await connectDB();
+    
+    // Find an INSTATION bin in the same module
+    const instationBin = await db.collection("smartbin").findOne({ 
+      moduleName: HabitatModuleEnum.RecyclingModule, 
+      mobility: "INSTATION" 
+    });
+    
+    if (!instationBin) {
+      throw new Error("No INSTATION bin found in this module");
+    }
+    
+    // Get all trash items from the source bin
+    const trashItems = await db.collection("trashitem").find({ binId: sourceBinId }).toArray();
+    
+    if (trashItems.length === 0) {
+      return { success: true, message: "No trash items to dump", movedCount: 0 };
+    }
+    
+    // Move all trash items to the INSTATION bin
+    const result = await db.collection("trashitem").updateMany(
+      { binId: sourceBinId },
+      { $set: { binId: instationBin.binId } }
+    );
+    
+    // Update filled percentage of both bins
+    const sourceBin = await db.collection("smartbin").findOne({ binId: sourceBinId });
+    if (sourceBin) {
+      await db.collection("smartbin").updateOne(
+        { binId: sourceBinId },
+        { $set: { filledPercentage: 0 } }
+      );
+    }
+    
+    // Calculate new filled percentage for INSTATION bin
+    const newInstationTrashCount = await db.collection("trashitem").countDocuments({ binId: instationBin.binId });
+    const newFilledPercentage = Math.min(100, newInstationTrashCount * 10); // Assuming 10 items = 100%
+    
+    await db.collection("smartbin").updateOne(
+      { binId: instationBin.binId },
+      { $set: { filledPercentage: newFilledPercentage } }
+    );
+    
+    return { 
+      success: true, 
+      message: `Moved ${result.modifiedCount} items to INSTATION bin`, 
+      movedCount: result.modifiedCount,
+      instationBinId: instationBin.binId
     };
   });
   

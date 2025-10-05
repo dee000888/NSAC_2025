@@ -1,22 +1,27 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import moduleImage from "../assets/images/(modules)/circular-module_1-Photoroom.png";
-import { ResidenceContext } from "@renderer/contexts/ResidenceContext";
 import { HabitatModuleEnum, SmartBinSchema, ConsumableItemSchema, TrashItemSchema } from "@renderer/lib/types";
 import SmartBinItem from "./SmartBinItem";
 import ConsumableItemsPopup from "./ConsumableItemsPopup";
 import ModuleStatistics from "./ModuleStatistics";
+import { useLocation, useNavigate } from "react-router-dom";
 
-export default function HabitatModule({ moduleName }: { moduleName: HabitatModuleEnum }): React.ReactElement {
+export default function HabitatModule(): React.ReactElement {
   
-  const residenceContext = useContext(ResidenceContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  const { moduleName } = location.state;
 
+  const [smartBins, setSmartBins] = useState<SmartBinSchema[]>([]);
+  const [trashItems, setTrashItems] = useState<TrashItemSchema[]>([]);
   const [selectedBinId, setSelectedBinId] = useState<string | null>(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   async function getBinData() {
     try {
       const smartBins: SmartBinSchema[] = await window.electron.ipcRenderer.invoke("getSmartBins", moduleName);
-      residenceContext?.setSmartBins(smartBins);
+      setSmartBins(smartBins);
     } catch (err) {
       console.error("Failed to fetch bin data:", err);
     }
@@ -25,7 +30,7 @@ export default function HabitatModule({ moduleName }: { moduleName: HabitatModul
   async function getTrashData() {
     try {
       const trashItems: TrashItemSchema[] = await window.electron.ipcRenderer.invoke("getTrashItems", selectedBinId);
-      residenceContext?.setTrashItems(trashItems);
+      setTrashItems(trashItems);
     } catch (err) {
       console.error("Failed to fetch trash data:", err);
     }
@@ -46,14 +51,10 @@ export default function HabitatModule({ moduleName }: { moduleName: HabitatModul
     try {
       setSelectedBinId(bin.binId);
       const items = await window.electron.ipcRenderer.invoke("getTrashItemsByBin", bin.binId);
-      residenceContext?.setTrashItems(items);
+      setTrashItems(items);
     } catch (err) {
       console.error("Failed to load trash items:", err);
     }
-  }
-
-  if (!residenceContext) {
-    return <div>Loading...</div>;
   }
 
   return (
@@ -65,7 +66,7 @@ export default function HabitatModule({ moduleName }: { moduleName: HabitatModul
         {/* Module Name */}
         <h2 className="text-2xl font-bold mb-4 flex gap-4">
           <button
-            onClick={() => residenceContext.setSelectedScene("Jezero")}
+            onClick={() =>  navigate("/")}
             className="p-1 pl-2 pr-2 bg-white/80 rounded-md hover:bg-white text-black"
           >
             ←
@@ -92,7 +93,7 @@ export default function HabitatModule({ moduleName }: { moduleName: HabitatModul
           <>
             <h2 className="text-2xl font-bold text-white mb-6">Smart Bins</h2>
             <div className="grid grid-cols-4 gap-4">
-              {residenceContext?.smartBins.map((bin) => (
+              {smartBins.map((bin) => (
                 <SmartBinItem key={bin.binId} bin={bin} onClick={handleSelectBin} onAssigned={getBinData} />
               ))}
             </div>
@@ -112,7 +113,7 @@ export default function HabitatModule({ moduleName }: { moduleName: HabitatModul
                   className="p-2 px-3 bg-white/20 hover:bg-white/30 rounded text-white"
                   onClick={() => {
                     setSelectedBinId(null);
-                    residenceContext.setTrashItems([]);
+                    setTrashItems([]);
                   }}
                 >
                   Back to Bins
@@ -122,10 +123,10 @@ export default function HabitatModule({ moduleName }: { moduleName: HabitatModul
             <div className="bg-gray-800 rounded-lg p-4">
               <div className="text-white text-sm mb-3">Bin ID: {selectedBinId}</div>
               <div className="grid grid-cols-3 gap-3">
-                {residenceContext.trashItems.length === 0 && (
+                {trashItems.length === 0 && (
                   <div className="text-gray-300">No items in this bin.</div>
                 )}
-                {residenceContext.trashItems.map((item) => (
+                {trashItems.map((item) => (
                   <div key={item.trashId} className="bg-gray-700 p-3 rounded text-white">
                     <div className="text-xs text-gray-300 mb-1">ID: {item.trashId}</div>
                     <div className="text-sm font-semibold mb-1">{item.codeName}</div>
@@ -149,7 +150,7 @@ export default function HabitatModule({ moduleName }: { moduleName: HabitatModul
           if (selectedBinId) {
             try {
               const items = await window.electron.ipcRenderer.invoke("getTrashItems", selectedBinId);
-              residenceContext?.setTrashItems(items);
+              setTrashItems(items);
               console.log(`Item ${item.name} successfully added to bin ${selectedBinId}`);
               
               // Refresh the trash data to update statistics

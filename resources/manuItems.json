@@ -1,302 +1,902 @@
 [
   {
     "itemName": "Habitat Insulation Panels",
-    "rawMaterials": ["POLYETHYLENE_FOAM", "ALUMINUM_FOIL", "CELLULOSE_FIBER"],
-    "manufactureProcess": ["COMPRESSION_MOLDING", "LAMINATING", "CUTTING_AND_SHAPING"],
+    "manufactureProcess": [
+      {
+        "process": "COMPRESSION_MOLDING",
+        "rawMaterials": { "POLYETHYLENE_FOAM": 0.7, "CELLULOSE_FIBER": 0.3 }
+      },
+      {
+        "process": "LAMINATING",
+        "rawMaterials": { "ALUMINUM_FOIL": 1.0 }
+      },
+      {
+        "process": "CUTTING_AND_SHAPING",
+        "rawMaterials": { "POLYETHYLENE_FOAM": 0.2 }
+      }
+    ],
     "application": "RENOVATION"
   },
   {
     "itemName": "Structural Support Brackets",
-    "rawMaterials": ["ALUMINUM", "CARBON_FIBER"],
-    "manufactureProcess": ["CASTING", "CNC_MACHINING", "WELDING"],
+    "manufactureProcess": [
+      {
+        "process": "CASTING",
+        "rawMaterials": { "ALUMINUM": 0.8, "CARBON_FIBER": 0.2 }
+      },
+      {
+        "process": "CNC_MACHINING",
+        "rawMaterials": { "ALUMINUM": 0.2 }
+      },
+      {
+        "process": "WELDING",
+        "rawMaterials": { "ALUMINUM": 0.1 }
+      }
+    ],
     "application": "RENOVATION"
   },
   {
     "itemName": "Floor Tiles",
-    "rawMaterials": ["POLYPROPYLENE", "CARBON", "POLYETHYLENE"],
-    "manufactureProcess": ["COMPRESSION_MOLDING", "SINTERING", "CUTTING_AND_SHAPING"],
+    "manufactureProcess": [
+      {
+        "process": "COMPRESSION_MOLDING",
+        "rawMaterials": { "POLYPROPYLENE": 0.5, "POLYETHYLENE": 0.3 }
+      },
+      {
+        "process": "SINTERING",
+        "rawMaterials": { "CARBON": 1.0 }
+      },
+      {
+        "process": "CUTTING_AND_SHAPING",
+        "rawMaterials": { "POLYPROPYLENE": 0.2 }
+      }
+    ],
     "application": "RENOVATION"
   },
   {
     "itemName": "Storage Shelving Units",
-    "rawMaterials": ["ALUMINUM", "POLYETHYLENE"],
-    "manufactureProcess": ["MECHANICAL_ASSEMBLY", "WELDING", "THREE_D_PRINTING"],
+    "manufactureProcess": [
+      {
+        "process": "MECHANICAL_ASSEMBLY",
+        "rawMaterials": { "ALUMINUM": 0.6, "POLYETHYLENE": 0.4 }
+      },
+      {
+        "process": "WELDING",
+        "rawMaterials": { "ALUMINUM": 0.2 }
+      },
+      {
+        "process": "THREE_D_PRINTING",
+        "rawMaterials": { "POLYETHYLENE": 0.3 }
+      }
+    ],
     "application": "RENOVATION"
   },
   {
     "itemName": "Wall Partitions",
-    "rawMaterials": ["ALUMINUM", "POLYETHYLENE_FOAM", "FABRIC_BACKING"],
-    "manufactureProcess": ["MECHANICAL_ASSEMBLY", "ADHESIVE_BONDING", "LAMINATING"],
+    "manufactureProcess": [
+      {
+        "process": "MECHANICAL_ASSEMBLY",
+        "rawMaterials": { "ALUMINUM": 0.5 }
+      },
+      {
+        "process": "ADHESIVE_BONDING",
+        "rawMaterials": { "POLYETHYLENE_FOAM": 0.7, "FABRIC_BACKING": 0.3 }
+      },
+      {
+        "process": "LAMINATING",
+        "rawMaterials": { "FABRIC_BACKING": 0.5, "POLYETHYLENE_FOAM": 0.3 }
+      }
+    ],
     "application": "RENOVATION"
   },
   {
     "itemName": "Furniture Framework",
-    "rawMaterials": ["ALUMINUM", "CARBON_FIBER", "POLYESTER"],
-    "manufactureProcess": ["WELDING", "FIBER_LAYING", "MECHANICAL_ASSEMBLY"],
+    "manufactureProcess": [
+      {
+        "process": "WELDING",
+        "rawMaterials": { "ALUMINUM": 0.6 }
+      },
+      {
+        "process": "FIBER_LAYING",
+        "rawMaterials": { "CARBON_FIBER": 0.8, "POLYESTER": 0.2 }
+      },
+      {
+        "process": "MECHANICAL_ASSEMBLY",
+        "rawMaterials": { "ALUMINUM": 0.2, "POLYESTER": 0.1 }
+      }
+    ],
     "application": "RENOVATION"
   },
   {
     "itemName": "Cushioned Seating",
-    "rawMaterials": ["POLYETHYLENE_FOAM", "COTTON", "POLYESTER"],
-    "manufactureProcess": ["COMPRESSION_MOLDING", "SEWING", "HAND_CRAFTING"],
+    "manufactureProcess": [
+      {
+        "process": "COMPRESSION_MOLDING",
+        "rawMaterials": { "POLYETHYLENE_FOAM": 1.0 }
+      },
+      {
+        "process": "SEWING",
+        "rawMaterials": { "COTTON": 0.5, "POLYESTER": 0.5 }
+      },
+      {
+        "process": "HAND_CRAFTING",
+        "rawMaterials": { "COTTON": 0.2, "POLYESTER": 0.2 }
+      }
+    ],
     "application": "RENOVATION"
   },
   {
     "itemName": "Cable Management Trays",
-    "rawMaterials": ["ALUMINUM", "POLYPROPYLENE"],
-    "manufactureProcess": ["EXTRUSION_MOLDING", "CNC_MACHINING", "THREE_D_PRINTING"],
+    "manufactureProcess": [
+      {
+        "process": "EXTRUSION_MOLDING",
+        "rawMaterials": { "POLYPROPYLENE": 0.7 }
+      },
+      {
+        "process": "CNC_MACHINING",
+        "rawMaterials": { "ALUMINUM": 0.8 }
+      },
+      {
+        "process": "THREE_D_PRINTING",
+        "rawMaterials": { "POLYPROPYLENE": 0.3 }
+      }
+    ],
     "application": "RENOVATION"
   },
   {
     "itemName": "Ventilation Ducting",
-    "rawMaterials": ["ALUMINUM", "POLYETHYLENE"],
-    "manufactureProcess": ["EXTRUSION_MOLDING", "WELDING", "MECHANICAL_ASSEMBLY"],
+    "manufactureProcess": [
+      {
+        "process": "EXTRUSION_MOLDING",
+        "rawMaterials": { "POLYETHYLENE": 0.6 }
+      },
+      {
+        "process": "WELDING",
+        "rawMaterials": { "ALUMINUM": 0.9 }
+      },
+      {
+        "process": "MECHANICAL_ASSEMBLY",
+        "rawMaterials": { "ALUMINUM": 0.1, "POLYETHYLENE": 0.2 }
+      }
+    ],
     "application": "RENOVATION"
   },
   {
     "itemName": "Door Panels",
-    "rawMaterials": ["ALUMINUM", "POLYETHYLENE_FOAM", "CARBON_FIBER"],
-    "manufactureProcess": ["LAMINATING", "COMPRESSION_MOLDING", "CNC_MACHINING"],
+    "manufactureProcess": [
+      {
+        "process": "LAMINATING",
+        "rawMaterials": { "ALUMINUM_FOIL": 0.4, "CARBON_FIBER": 0.3 }
+      },
+      {
+        "process": "COMPRESSION_MOLDING",
+        "rawMaterials": { "POLYETHYLENE_FOAM": 0.8 }
+      },
+      {
+        "process": "CNC_MACHINING",
+        "rawMaterials": { "ALUMINUM": 0.7 }
+      }
+    ],
     "application": "RENOVATION"
   },
   {
     "itemName": "Decorative Banners",
-    "rawMaterials": ["POLYESTER", "COTTON", "INK"],
-    "manufactureProcess": ["SEWING", "HAND_CRAFTING", "WEAVING"],
+    "manufactureProcess": [
+      {
+        "process": "SEWING",
+        "rawMaterials": { "POLYESTER": 0.6, "COTTON": 0.4 }
+      },
+      {
+        "process": "HAND_CRAFTING",
+        "rawMaterials": { "POLYESTER": 0.2, "COTTON": 0.2, "INK": 0.1 }
+      },
+      {
+        "process": "WEAVING",
+        "rawMaterials": { "POLYESTER": 0.5, "COTTON": 0.5 }
+      }
+    ],
     "application": "CELEBRATION"
   },
   {
     "itemName": "Party Hats",
-    "rawMaterials": ["PAPER", "CELLULOSE_FIBER", "ADHESIVE_RESIDUE"],
-    "manufactureProcess": ["HAND_CRAFTING", "PULP_MOLDING", "ADHESIVE_BONDING"],
+    "manufactureProcess": [
+      {
+        "process": "HAND_CRAFTING",
+        "rawMaterials": { "PAPER": 0.5, "CELLULOSE_FIBER": 0.3, "ADHESIVE_RESIDUE": 0.2 }
+      },
+      {
+        "process": "PULP_MOLDING",
+        "rawMaterials": { "PAPER": 0.4, "CELLULOSE_FIBER": 0.6 }
+      },
+      {
+        "process": "ADHESIVE_BONDING",
+        "rawMaterials": { "ADHESIVE_RESIDUE": 0.8 }
+      }
+    ],
     "application": "CELEBRATION"
   },
   {
     "itemName": "Confetti",
-    "rawMaterials": ["PAPER", "ALUMINUM_FOIL", "POLYESTER"],
-    "manufactureProcess": ["CUTTING_AND_SHAPING", "MECHANICAL_SHREDDING", "HAND_CRAFTING"],
+    "manufactureProcess": [
+      {
+        "process": "CUTTING_AND_SHAPING",
+        "rawMaterials": { "PAPER": 0.5, "POLYESTER": 0.3 }
+      },
+      {
+        "process": "MECHANICAL_SHREDDING",
+        "rawMaterials": { "PAPER": 0.4, "ALUMINUM_FOIL": 0.4 }
+      },
+      {
+        "process": "HAND_CRAFTING",
+        "rawMaterials": { "ALUMINUM_FOIL": 0.2, "POLYESTER": 0.2 }
+      }
+    ],
     "application": "CELEBRATION"
   },
   {
     "itemName": "Disco Ball",
-    "rawMaterials": ["POLYETHYLENE_FOAM", "ALUMINUM_FOIL", "ADHESIVE_RESIDUE"],
-    "manufactureProcess": ["HAND_CRAFTING", "ADHESIVE_BONDING", "CUTTING_AND_SHAPING"],
+    "manufactureProcess": [
+      {
+        "process": "HAND_CRAFTING",
+        "rawMaterials": { "POLYETHYLENE_FOAM": 0.3, "ALUMINUM_FOIL": 0.6, "ADHESIVE_RESIDUE": 0.1 }
+      },
+      {
+        "process": "ADHESIVE_BONDING",
+        "rawMaterials": { "ADHESIVE_RESIDUE": 0.9 }
+      },
+      {
+        "process": "CUTTING_AND_SHAPING",
+        "rawMaterials": { "ALUMINUM_FOIL": 0.3 }
+      }
+    ],
     "application": "CELEBRATION"
   },
   {
     "itemName": "Decorative Streamers",
-    "rawMaterials": ["POLYETHYLENE", "ALUMINUM_FOIL", "PAPER"],
-    "manufactureProcess": ["EXTRUSION_MOLDING", "CUTTING_AND_SHAPING", "HAND_CRAFTING"],
+    "manufactureProcess": [
+      {
+        "process": "EXTRUSION_MOLDING",
+        "rawMaterials": { "POLYETHYLENE": 0.8 }
+      },
+      {
+        "process": "CUTTING_AND_SHAPING",
+        "rawMaterials": { "POLYETHYLENE": 0.2, "ALUMINUM_FOIL": 0.5 }
+      },
+      {
+        "process": "HAND_CRAFTING",
+        "rawMaterials": { "PAPER": 0.4, "ALUMINUM_FOIL": 0.2 }
+      }
+    ],
     "application": "CELEBRATION"
   },
   {
     "itemName": "Party Plates",
-    "rawMaterials": ["POLYPROPYLENE", "PAPER", "CELLULOSE_FIBER"],
-    "manufactureProcess": ["COMPRESSION_MOLDING", "PULP_MOLDING", "THERMOFORMING"],
+    "manufactureProcess": [
+      {
+        "process": "COMPRESSION_MOLDING",
+        "rawMaterials": { "POLYPROPYLENE": 0.6 }
+      },
+      {
+        "process": "PULP_MOLDING",
+        "rawMaterials": { "PAPER": 0.5, "CELLULOSE_FIBER": 0.5 }
+      },
+      {
+        "process": "THERMOFORMING",
+        "rawMaterials": { "POLYPROPYLENE": 0.4 }
+      }
+    ],
     "application": "CELEBRATION"
   },
   {
     "itemName": "Party Cups",
-    "rawMaterials": ["POLYPROPYLENE", "POLYETHYLENE", "PAPER"],
-    "manufactureProcess": ["INJECTION_MOLDING", "THERMOFORMING", "PULP_MOLDING"],
+    "manufactureProcess": [
+      {
+        "process": "INJECTION_MOLDING",
+        "rawMaterials": { "POLYPROPYLENE": 0.7 }
+      },
+      {
+        "process": "THERMOFORMING",
+        "rawMaterials": { "POLYETHYLENE": 0.6 }
+      },
+      {
+        "process": "PULP_MOLDING",
+        "rawMaterials": { "PAPER": 0.6, "CELLULOSE_FIBER": 0.4 }
+      }
+    ],
     "application": "CELEBRATION"
   },
   {
     "itemName": "Gift Wrapping Paper",
-    "rawMaterials": ["PAPER", "CELLULOSE_FIBER", "INK"],
-    "manufactureProcess": ["PULP_MOLDING", "PRESSING", "HAND_CRAFTING"],
+    "manufactureProcess": [
+      {
+        "process": "PULP_MOLDING",
+        "rawMaterials": { "PAPER": 0.7, "CELLULOSE_FIBER": 0.3 }
+      },
+      {
+        "process": "PRESSING",
+        "rawMaterials": { "PAPER": 0.2 }
+      },
+      {
+        "process": "HAND_CRAFTING",
+        "rawMaterials": { "INK": 0.3 }
+      }
+    ],
     "application": "CELEBRATION"
   },
   {
     "itemName": "Decorative Garlands",
-    "rawMaterials": ["COTTON", "POLYESTER", "ALUMINUM_FOIL"],
-    "manufactureProcess": ["WEAVING", "SEWING", "HAND_CRAFTING"],
+    "manufactureProcess": [
+      {
+        "process": "WEAVING",
+        "rawMaterials": { "COTTON": 0.4, "POLYESTER": 0.6 }
+      },
+      {
+        "process": "SEWING",
+        "rawMaterials": { "POLYESTER": 0.3, "COTTON": 0.2 }
+      },
+      {
+        "process": "HAND_CRAFTING",
+        "rawMaterials": { "ALUMINUM_FOIL": 0.5 }
+      }
+    ],
     "application": "CELEBRATION"
   },
   {
     "itemName": "Balloons",
-    "rawMaterials": ["NITRILE_RUBBER", "POLYETHYLENE"],
-    "manufactureProcess": ["INJECTION_MOLDING", "THERMOFORMING", "HAND_CRAFTING"],
+    "manufactureProcess": [
+      {
+        "process": "INJECTION_MOLDING",
+        "rawMaterials": { "NITRILE_RUBBER": 0.8 }
+      },
+      {
+        "process": "THERMOFORMING",
+        "rawMaterials": { "POLYETHYLENE": 0.7 }
+      },
+      {
+        "process": "HAND_CRAFTING",
+        "rawMaterials": { "NITRILE_RUBBER": 0.2 }
+      }
+    ],
     "application": "CELEBRATION"
   },
   {
     "itemName": "Carbon Filter Cartridges",
-    "rawMaterials": ["CARBON", "POLYPROPYLENE", "NYLON"],
-    "manufactureProcess": ["SINTERING", "COMPRESSION_MOLDING", "MECHANICAL_ASSEMBLY"],
+    "manufactureProcess": [
+      {
+        "process": "SINTERING",
+        "rawMaterials": { "CARBON": 0.9 }
+      },
+      {
+        "process": "COMPRESSION_MOLDING",
+        "rawMaterials": { "POLYPROPYLENE": 0.6, "NYLON": 0.4 }
+      },
+      {
+        "process": "MECHANICAL_ASSEMBLY",
+        "rawMaterials": { "POLYPROPYLENE": 0.2, "NYLON": 0.2 }
+      }
+    ],
     "application": "DISCOVERY"
   },
   {
     "itemName": "Laboratory Sample Containers",
-    "rawMaterials": ["POLYPROPYLENE", "POLYETHYLENE"],
-    "manufactureProcess": ["INJECTION_MOLDING", "THREE_D_PRINTING", "THERMOFORMING"],
+    "manufactureProcess": [
+      {
+        "process": "INJECTION_MOLDING",
+        "rawMaterials": { "POLYPROPYLENE": 0.8 }
+      },
+      {
+        "process": "THREE_D_PRINTING",
+        "rawMaterials": { "POLYETHYLENE": 0.6 }
+      },
+      {
+        "process": "THERMOFORMING",
+        "rawMaterials": { "POLYPROPYLENE": 0.2 }
+      }
+    ],
     "application": "DISCOVERY"
   },
   {
     "itemName": "Air Filter Membranes",
-    "rawMaterials": ["CARBON", "NYLON", "POLYESTER"],
-    "manufactureProcess": ["SINTERING", "FIBER_LAYING", "LAMINATING"],
+    "manufactureProcess": [
+      {
+        "process": "SINTERING",
+        "rawMaterials": { "CARBON": 0.7 }
+      },
+      {
+        "process": "FIBER_LAYING",
+        "rawMaterials": { "NYLON": 0.5, "POLYESTER": 0.5 }
+      },
+      {
+        "process": "LAMINATING",
+        "rawMaterials": { "POLYESTER": 0.3, "NYLON": 0.3 }
+      }
+    ],
     "application": "DISCOVERY"
   },
   {
     "itemName": "Experiment Mounting Brackets",
-    "rawMaterials": ["ALUMINUM", "CARBON_FIBER"],
-    "manufactureProcess": ["CNC_MACHINING", "THREE_D_PRINTING", "MECHANICAL_ASSEMBLY"],
+    "manufactureProcess": [
+      {
+        "process": "CNC_MACHINING",
+        "rawMaterials": { "ALUMINUM": 0.7 }
+      },
+      {
+        "process": "THREE_D_PRINTING",
+        "rawMaterials": { "CARBON_FIBER": 0.8 }
+      },
+      {
+        "process": "MECHANICAL_ASSEMBLY",
+        "rawMaterials": { "ALUMINUM": 0.2, "CARBON_FIBER": 0.2 }
+      }
+    ],
     "application": "DISCOVERY"
   },
   {
     "itemName": "Carbon Composite Rods",
-    "rawMaterials": ["CARBON", "CARBON_FIBER", "EPOXY_RESIN"],
-    "manufactureProcess": ["SINTERING", "COMPRESSION_MOLDING", "FIBER_LAYING"],
+    "manufactureProcess": [
+      {
+        "process": "SINTERING",
+        "rawMaterials": { "CARBON": 0.6 }
+      },
+      {
+        "process": "COMPRESSION_MOLDING",
+        "rawMaterials": { "EPOXY_RESIN": 0.5, "CARBON": 0.3 }
+      },
+      {
+        "process": "FIBER_LAYING",
+        "rawMaterials": { "CARBON_FIBER": 0.9 }
+      }
+    ],
     "application": "DISCOVERY"
   },
   {
     "itemName": "Protective Equipment Cases",
-    "rawMaterials": ["POLYPROPYLENE", "POLYETHYLENE_FOAM", "ALUMINUM"],
-    "manufactureProcess": ["INJECTION_MOLDING", "LAMINATING", "MECHANICAL_ASSEMBLY"],
+    "manufactureProcess": [
+      {
+        "process": "INJECTION_MOLDING",
+        "rawMaterials": { "POLYPROPYLENE": 0.7 }
+      },
+      {
+        "process": "LAMINATING",
+        "rawMaterials": { "POLYETHYLENE_FOAM": 0.6, "ALUMINUM": 0.3 }
+      },
+      {
+        "process": "MECHANICAL_ASSEMBLY",
+        "rawMaterials": { "ALUMINUM": 0.2 }
+      }
+    ],
     "application": "DISCOVERY"
   },
   {
     "itemName": "Sample Collection Bags",
-    "rawMaterials": ["POLYETHYLENE", "NYLON"],
-    "manufactureProcess": ["EXTRUSION_MOLDING", "SEWING", "HAND_CRAFTING"],
+    "manufactureProcess": [
+      {
+        "process": "EXTRUSION_MOLDING",
+        "rawMaterials": { "POLYETHYLENE": 0.8 }
+      },
+      {
+        "process": "SEWING",
+        "rawMaterials": { "NYLON": 0.7 }
+      },
+      {
+        "process": "HAND_CRAFTING",
+        "rawMaterials": { "POLYETHYLENE": 0.1, "NYLON": 0.2 }
+      }
+    ],
     "application": "DISCOVERY"
   },
   {
     "itemName": "Carbon Electrode Plates",
-    "rawMaterials": ["CARBON", "COPPER"],
-    "manufactureProcess": ["SINTERING", "COMPRESSION_MOLDING", "CNC_MACHINING"],
+    "manufactureProcess": [
+      {
+        "process": "SINTERING",
+        "rawMaterials": { "CARBON": 0.8 }
+      },
+      {
+        "process": "COMPRESSION_MOLDING",
+        "rawMaterials": { "CARBON": 0.2 }
+      },
+      {
+        "process": "CNC_MACHINING",
+        "rawMaterials": { "COPPER": 0.9 }
+      }
+    ],
     "application": "DISCOVERY"
   },
   {
     "itemName": "Mesh Filter Screens",
-    "rawMaterials": ["NYLON", "POLYESTER", "STEEL"],
-    "manufactureProcess": ["WEAVING", "CNC_MACHINING", "MECHANICAL_ASSEMBLY"],
+    "manufactureProcess": [
+      {
+        "process": "WEAVING",
+        "rawMaterials": { "NYLON": 0.4, "POLYESTER": 0.4, "STEEL": 0.2 }
+      },
+      {
+        "process": "CNC_MACHINING",
+        "rawMaterials": { "STEEL": 0.8 }
+      },
+      {
+        "process": "MECHANICAL_ASSEMBLY",
+        "rawMaterials": { "STEEL": 0.1, "NYLON": 0.2 }
+      }
+    ],
     "application": "DISCOVERY"
   },
   {
     "itemName": "Sealable Test Chambers",
-    "rawMaterials": ["POLYPROPYLENE", "NITRILE_RUBBER", "ALUMINUM"],
-    "manufactureProcess": ["INJECTION_MOLDING", "COMPRESSION_MOLDING", "MECHANICAL_ASSEMBLY"],
+    "manufactureProcess": [
+      {
+        "process": "INJECTION_MOLDING",
+        "rawMaterials": { "POLYPROPYLENE": 0.7 }
+      },
+      {
+        "process": "COMPRESSION_MOLDING",
+        "rawMaterials": { "NITRILE_RUBBER": 0.8 }
+      },
+      {
+        "process": "MECHANICAL_ASSEMBLY",
+        "rawMaterials": { "ALUMINUM": 0.6 }
+      }
+    ],
     "application": "DISCOVERY"
   },
   {
     "itemName": "Repair Patches",
-    "rawMaterials": ["POLYETHYLENE", "ADHESIVE_RESIDUE", "FABRIC_BACKING"],
-    "manufactureProcess": ["LAMINATING", "HAND_CRAFTING", "CUTTING_AND_SHAPING"],
+    "manufactureProcess": [
+      {
+        "process": "LAMINATING",
+        "rawMaterials": { "POLYETHYLENE": 0.5, "FABRIC_BACKING": 0.5 }
+      },
+      {
+        "process": "HAND_CRAFTING",
+        "rawMaterials": { "ADHESIVE_RESIDUE": 0.6 }
+      },
+      {
+        "process": "CUTTING_AND_SHAPING",
+        "rawMaterials": { "POLYETHYLENE": 0.2, "FABRIC_BACKING": 0.2 }
+      }
+    ],
     "application": "RENOVATION"
   },
   {
     "itemName": "Pressure Seals",
-    "rawMaterials": ["NITRILE_RUBBER", "SILICONE_RUBBER"],
-    "manufactureProcess": ["COMPRESSION_MOLDING", "INJECTION_MOLDING", "HAND_CRAFTING"],
+    "manufactureProcess": [
+      {
+        "process": "COMPRESSION_MOLDING",
+        "rawMaterials": { "NITRILE_RUBBER": 0.6, "SILICONE_RUBBER": 0.4 }
+      },
+      {
+        "process": "INJECTION_MOLDING",
+        "rawMaterials": { "NITRILE_RUBBER": 0.3 }
+      },
+      {
+        "process": "HAND_CRAFTING",
+        "rawMaterials": { "SILICONE_RUBBER": 0.2 }
+      }
+    ],
     "application": "RENOVATION"
   },
   {
     "itemName": "Thermal Blankets",
-    "rawMaterials": ["ALUMINUM_FOIL", "POLYESTER", "POLYETHYLENE_FOAM"],
-    "manufactureProcess": ["LAMINATING", "SEWING", "ADHESIVE_BONDING"],
+    "manufactureProcess": [
+      {
+        "process": "LAMINATING",
+        "rawMaterials": { "ALUMINUM_FOIL": 0.5, "POLYETHYLENE_FOAM": 0.4 }
+      },
+      {
+        "process": "SEWING",
+        "rawMaterials": { "POLYESTER": 0.8 }
+      },
+      {
+        "process": "ADHESIVE_BONDING",
+        "rawMaterials": { "POLYETHYLENE_FOAM": 0.2, "ADHESIVE_RESIDUE": 0.3 }
+      }
+    ],
     "application": "RENOVATION"
   },
   {
     "itemName": "Tool Handles",
-    "rawMaterials": ["POLYPROPYLENE", "NITRILE_RUBBER", "CARBON_FIBER"],
-    "manufactureProcess": ["INJECTION_MOLDING", "THREE_D_PRINTING", "MECHANICAL_ASSEMBLY"],
+    "manufactureProcess": [
+      {
+        "process": "INJECTION_MOLDING",
+        "rawMaterials": { "POLYPROPYLENE": 0.6, "NITRILE_RUBBER": 0.4 }
+      },
+      {
+        "process": "THREE_D_PRINTING",
+        "rawMaterials": { "CARBON_FIBER": 0.8 }
+      },
+      {
+        "process": "MECHANICAL_ASSEMBLY",
+        "rawMaterials": { "POLYPROPYLENE": 0.2, "CARBON_FIBER": 0.2 }
+      }
+    ],
     "application": "RENOVATION"
   },
   {
     "itemName": "Fastener Clips",
-    "rawMaterials": ["NYLON", "POLYPROPYLENE", "STEEL"],
-    "manufactureProcess": ["INJECTION_MOLDING", "THREE_D_PRINTING", "CNC_MACHINING"],
+    "manufactureProcess": [
+      {
+        "process": "INJECTION_MOLDING",
+        "rawMaterials": { "NYLON": 0.6, "POLYPROPYLENE": 0.4 }
+      },
+      {
+        "process": "THREE_D_PRINTING",
+        "rawMaterials": { "POLYPROPYLENE": 0.3 }
+      },
+      {
+        "process": "CNC_MACHINING",
+        "rawMaterials": { "STEEL": 0.9 }
+      }
+    ],
     "application": "RENOVATION"
   },
   {
     "itemName": "Picture Frames",
-    "rawMaterials": ["ALUMINUM", "POLYETHYLENE", "PAPER"],
-    "manufactureProcess": ["CNC_MACHINING", "MECHANICAL_ASSEMBLY", "HAND_CRAFTING"],
+    "manufactureProcess": [
+      {
+        "process": "CNC_MACHINING",
+        "rawMaterials": { "ALUMINUM": 0.8 }
+      },
+      {
+        "process": "MECHANICAL_ASSEMBLY",
+        "rawMaterials": { "POLYETHYLENE": 0.4, "PAPER": 0.2 }
+      },
+      {
+        "process": "HAND_CRAFTING",
+        "rawMaterials": { "PAPER": 0.3 }
+      }
+    ],
     "application": "CELEBRATION"
   },
   {
     "itemName": "Name Tags",
-    "rawMaterials": ["PAPER", "PLASTIC_COATING", "INK"],
-    "manufactureProcess": ["PULP_MOLDING", "LAMINATING", "HAND_CRAFTING"],
+    "manufactureProcess": [
+      {
+        "process": "PULP_MOLDING",
+        "rawMaterials": { "PAPER": 0.8 }
+      },
+      {
+        "process": "LAMINATING",
+        "rawMaterials": { "PLASTIC_COATING": 0.9 }
+      },
+      {
+        "process": "HAND_CRAFTING",
+        "rawMaterials": { "INK": 0.4 }
+      }
+    ],
     "application": "CELEBRATION"
   },
   {
     "itemName": "Tablecloths",
-    "rawMaterials": ["POLYESTER", "COTTON", "NYLON"],
-    "manufactureProcess": ["WEAVING", "SEWING", "HAND_CRAFTING"],
+    "manufactureProcess": [
+      {
+        "process": "WEAVING",
+        "rawMaterials": { "POLYESTER": 0.5, "COTTON": 0.4, "NYLON": 0.1 }
+      },
+      {
+        "process": "SEWING",
+        "rawMaterials": { "POLYESTER": 0.3, "COTTON": 0.2 }
+      },
+      {
+        "process": "HAND_CRAFTING",
+        "rawMaterials": { "NYLON": 0.2 }
+      }
+    ],
     "application": "CELEBRATION"
   },
   {
     "itemName": "Napkins",
-    "rawMaterials": ["COTTON", "CELLULOSE_FIBER", "PAPER"],
-    "manufactureProcess": ["PULP_MOLDING", "SEWING", "PRESSING"],
+    "manufactureProcess": [
+      {
+        "process": "PULP_MOLDING",
+        "rawMaterials": { "CELLULOSE_FIBER": 0.6, "PAPER": 0.4 }
+      },
+      {
+        "process": "SEWING",
+        "rawMaterials": { "COTTON": 0.8 }
+      },
+      {
+        "process": "PRESSING",
+        "rawMaterials": { "COTTON": 0.2 }
+      }
+    ],
     "application": "CELEBRATION"
   },
   {
     "itemName": "Carbon Absorption Beds",
-    "rawMaterials": ["CARBON", "ALUMINUM", "NYLON"],
-    "manufactureProcess": ["SINTERING", "MECHANICAL_ASSEMBLY", "COMPRESSION_MOLDING"],
+    "manufactureProcess": [
+      {
+        "process": "SINTERING",
+        "rawMaterials": { "CARBON": 0.8 }
+      },
+      {
+        "process": "MECHANICAL_ASSEMBLY",
+        "rawMaterials": { "ALUMINUM": 0.6, "NYLON": 0.3 }
+      },
+      {
+        "process": "COMPRESSION_MOLDING",
+        "rawMaterials": { "CARBON": 0.2 }
+      }
+    ],
     "application": "DISCOVERY"
   },
   {
     "itemName": "Experiment Labels",
-    "rawMaterials": ["PAPER", "ADHESIVE_RESIDUE", "INK"],
-    "manufactureProcess": ["PULP_MOLDING", "HAND_CRAFTING", "ADHESIVE_BONDING"],
+    "manufactureProcess": [
+      {
+        "process": "PULP_MOLDING",
+        "rawMaterials": { "PAPER": 0.8 }
+      },
+      {
+        "process": "HAND_CRAFTING",
+        "rawMaterials": { "INK": 0.5 }
+      },
+      {
+        "process": "ADHESIVE_BONDING",
+        "rawMaterials": { "ADHESIVE_RESIDUE": 0.9 }
+      }
+    ],
     "application": "DISCOVERY"
   },
   {
     "itemName": "Protective Gloves",
-    "rawMaterials": ["NITRILE_RUBBER", "NYLON", "COTTON"],
-    "manufactureProcess": ["INJECTION_MOLDING", "SEWING", "HAND_CRAFTING"],
+    "manufactureProcess": [
+      {
+        "process": "INJECTION_MOLDING",
+        "rawMaterials": { "NITRILE_RUBBER": 0.8 }
+      },
+      {
+        "process": "SEWING",
+        "rawMaterials": { "NYLON": 0.5, "COTTON": 0.5 }
+      },
+      {
+        "process": "HAND_CRAFTING",
+        "rawMaterials": { "COTTON": 0.3 }
+      }
+    ],
     "application": "DISCOVERY"
   },
   {
     "itemName": "Sample Scoops",
-    "rawMaterials": ["ALUMINUM", "POLYPROPYLENE"],
-    "manufactureProcess": ["CNC_MACHINING", "THREE_D_PRINTING", "CASTING"],
+    "manufactureProcess": [
+      {
+        "process": "CNC_MACHINING",
+        "rawMaterials": { "ALUMINUM": 0.8 }
+      },
+      {
+        "process": "THREE_D_PRINTING",
+        "rawMaterials": { "POLYPROPYLENE": 0.7 }
+      },
+      {
+        "process": "CASTING",
+        "rawMaterials": { "ALUMINUM": 0.2 }
+      }
+    ],
     "application": "DISCOVERY"
   },
   {
     "itemName": "Wire Organizers",
-    "rawMaterials": ["POLYPROPYLENE", "NYLON", "ALUMINUM"],
-    "manufactureProcess": ["INJECTION_MOLDING", "THREE_D_PRINTING", "MECHANICAL_ASSEMBLY"],
+    "manufactureProcess": [
+      {
+        "process": "INJECTION_MOLDING",
+        "rawMaterials": { "POLYPROPYLENE": 0.6, "NYLON": 0.4 }
+      },
+      {
+        "process": "THREE_D_PRINTING",
+        "rawMaterials": { "POLYPROPYLENE": 0.3 }
+      },
+      {
+        "process": "MECHANICAL_ASSEMBLY",
+        "rawMaterials": { "ALUMINUM": 0.5 }
+      }
+    ],
     "application": "RENOVATION"
   },
   {
     "itemName": "Pipe Connectors",
-    "rawMaterials": ["POLYPROPYLENE", "NITRILE_RUBBER", "ALUMINUM"],
-    "manufactureProcess": ["INJECTION_MOLDING", "COMPRESSION_MOLDING", "CNC_MACHINING"],
+    "manufactureProcess": [
+      {
+        "process": "INJECTION_MOLDING",
+        "rawMaterials": { "POLYPROPYLENE": 0.6 }
+      },
+      {
+        "process": "COMPRESSION_MOLDING",
+        "rawMaterials": { "NITRILE_RUBBER": 0.8 }
+      },
+      {
+        "process": "CNC_MACHINING",
+        "rawMaterials": { "ALUMINUM": 0.7 }
+      }
+    ],
     "application": "RENOVATION"
   },
   {
     "itemName": "Habitat Window Covers",
-    "rawMaterials": ["ALUMINUM_FOIL", "POLYESTER", "CARBON_FIBER"],
-    "manufactureProcess": ["LAMINATING", "MECHANICAL_ASSEMBLY", "SEWING"],
+    "manufactureProcess": [
+      {
+        "process": "LAMINATING",
+        "rawMaterials": { "ALUMINUM_FOIL": 0.5, "CARBON_FIBER": 0.3 }
+      },
+      {
+        "process": "MECHANICAL_ASSEMBLY",
+        "rawMaterials": { "ALUMINUM_FOIL": 0.2, "POLYESTER": 0.4 }
+      },
+      {
+        "process": "SEWING",
+        "rawMaterials": { "POLYESTER": 0.6 }
+      }
+    ],
     "application": "RENOVATION"
   },
   {
     "itemName": "Equipment Straps",
-    "rawMaterials": ["NYLON", "POLYESTER", "PLASTIC_CAP"],
-    "manufactureProcess": ["WEAVING", "SEWING", "INJECTION_MOLDING"],
+    "manufactureProcess": [
+      {
+        "process": "WEAVING",
+        "rawMaterials": { "NYLON": 0.6, "POLYESTER": 0.4 }
+      },
+      {
+        "process": "SEWING",
+        "rawMaterials": { "POLYESTER": 0.3, "NYLON": 0.2 }
+      },
+      {
+        "process": "INJECTION_MOLDING",
+        "rawMaterials": { "PLASTIC_CAP": 1.0 }
+      }
+    ],
     "application": "RENOVATION"
   },
   {
     "itemName": "Science Poster Board",
-    "rawMaterials": ["PAPER", "CELLULOSE_FIBER", "ADHESIVE_RESIDUE"],
-    "manufactureProcess": ["PULP_MOLDING", "LAMINATING", "PRESSING"],
+    "manufactureProcess": [
+      {
+        "process": "PULP_MOLDING",
+        "rawMaterials": { "PAPER": 0.7, "CELLULOSE_FIBER": 0.3 }
+      },
+      {
+        "process": "LAMINATING",
+        "rawMaterials": { "ADHESIVE_RESIDUE": 0.6 }
+      },
+      {
+        "process": "PRESSING",
+        "rawMaterials": { "PAPER": 0.2 }
+      }
+    ],
     "application": "DISCOVERY"
   },
   {
     "itemName": "Specimen Slides",
-    "rawMaterials": ["POLYPROPYLENE", "POLYETHYLENE"],
-    "manufactureProcess": ["INJECTION_MOLDING", "CNC_MACHINING", "THREE_D_PRINTING"],
+    "manufactureProcess": [
+      {
+        "process": "INJECTION_MOLDING",
+        "rawMaterials": { "POLYPROPYLENE": 0.8 }
+      },
+      {
+        "process": "CNC_MACHINING",
+        "rawMaterials": { "POLYETHYLENE": 0.6 }
+      },
+      {
+        "process": "THREE_D_PRINTING",
+        "rawMaterials": { "POLYPROPYLENE": 0.2 }
+      }
+    ],
     "application": "DISCOVERY"
   },
   {
     "itemName": "Safety Barrier Tape",
-    "rawMaterials": ["POLYETHYLENE", "INK", "NYLON"],
-    "manufactureProcess": ["EXTRUSION_MOLDING", "HAND_CRAFTING", "WEAVING"],
+    "manufactureProcess": [
+      {
+        "process": "EXTRUSION_MOLDING",
+        "rawMaterials": { "POLYETHYLENE": 0.7 }
+      },
+      {
+        "process": "HAND_CRAFTING",
+        "rawMaterials": { "INK": 0.4 }
+      },
+      {
+        "process": "WEAVING",
+        "rawMaterials": { "NYLON": 0.8 }
+      }
+    ],
     "application": "DISCOVERY"
   }
 ]

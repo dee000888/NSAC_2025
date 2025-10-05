@@ -13,6 +13,7 @@ export default function SmartBinItem({
   
   const [isAssignOpen, setIsAssignOpen] = useState(false);
   const [selectedModule, setSelectedModule] = useState<HabitatModuleEnum | "">("");
+  const [isDumping, setIsDumping] = useState(false);
   
   const cardClass = useMemo(() => {
     // Different gray shades by bin type
@@ -41,17 +42,44 @@ export default function SmartBinItem({
     }
   }
 
+  async function handleDump() {
+    if (bin.mobility === "INSTATION") return;
+    
+    setIsDumping(true);
+    try {
+      const result = await window.electron.ipcRenderer.invoke("dumpBinToInstation", {
+        sourceBinId: bin.binId,
+      });
+      
+      if (result.success) {
+        alert(result.message);
+        onAssigned?.(); // Refresh the bin data
+      }
+    } catch (err) {
+      console.error("Failed to dump bin:", err);
+      alert("Failed to dump bin. Please try again.");
+    } finally {
+      setIsDumping(false);
+    }
+  }
+
   return (
     <div className={`${cardClass} rounded-lg p-4 text-white relative`}>
       
-      {bin.mobility === "INDOOR" && (
+      {bin.mobility === "INDOOR" && (<>
         <button
           className="absolute top-2 right-2 text-xs bg-white/20 hover:bg-white/30 text-white px-2 py-1 rounded"
           onClick={() => setIsAssignOpen(true)}
         >
           Assign
         </button>
-      )}
+        <button
+        className="absolute top-2 right-16 text-xs bg-white/20 hover:bg-white/30 text-white px-2 py-1 rounded"
+        onClick={() => handleDump()}
+      >
+        Dump
+      </button>
+      </>)}
 
       <button className="text-left w-full" onClick={() => onClick(bin)}>
         <div className="text-sm font-semibold mb-2">{bin.mobility}</div>
