@@ -1,20 +1,20 @@
 import { useMemo, useState } from "react";
 import { HabitatModuleEnum, SmartBinSchema } from "@renderer/lib/types";
 
-export default function SmartBinItem({
-  bin,
-  onClick,
-  onAssigned,
-}: {
-  bin: SmartBinSchema;
+type SmartBinProps = {
+  bin: SmartBinSchema & {filledPercentage: number};
   onClick: (bin: SmartBinSchema) => void;
   onAssigned?: () => void;
-}): React.ReactElement {
+}
+
+export default function SmartBinItem(props: SmartBinProps): React.ReactElement {
+
+  const { bin, onClick, onAssigned } = props;
   
   const [isAssignOpen, setIsAssignOpen] = useState(false);
   const [selectedModule, setSelectedModule] = useState<HabitatModuleEnum | "">("");
   const [isDumping, setIsDumping] = useState(false);
-  
+
   const cardClass = useMemo(() => {
     // Different gray shades by bin type
     switch (bin.mobility) {
@@ -43,14 +43,15 @@ export default function SmartBinItem({
   }
 
   async function handleDump() {
-    if (bin.mobility === "INSTATION") return;
     
+    if (bin.mobility === "INSTATION") return;
+
     setIsDumping(true);
     try {
       const result = await window.electron.ipcRenderer.invoke("dumpBinToInstation", {
         sourceBinId: bin.binId,
       });
-      
+
       if (result.success) {
         alert(result.message);
         onAssigned?.(); // Refresh the bin data
@@ -65,7 +66,7 @@ export default function SmartBinItem({
 
   return (
     <div className={`${cardClass} rounded-lg p-4 text-white relative`}>
-      
+
       {bin.mobility === "INDOOR" && (<>
         <button
           className="absolute top-2 right-2 text-xs bg-white/20 hover:bg-white/30 text-white px-2 py-1 rounded"
@@ -74,11 +75,11 @@ export default function SmartBinItem({
           Assign
         </button>
         <button
-        className="absolute top-2 right-16 text-xs bg-white/20 hover:bg-white/30 text-white px-2 py-1 rounded"
-        onClick={() => handleDump()}
-      >
-        Dump
-      </button>
+          className="absolute top-2 right-16 text-xs bg-white/20 hover:bg-white/30 text-white px-2 py-1 rounded"
+          onClick={() => handleDump()}
+        >
+          Dump
+        </button>
       </>)}
 
       <button className="text-left w-full" onClick={() => onClick(bin)}>
@@ -90,13 +91,12 @@ export default function SmartBinItem({
         </div>
         <div className="w-full bg-gray-500 rounded-full h-2 mt-2">
           <div
-            className={`h-2 rounded-full ${
-              bin.filledPercentage > 80
-                ? "bg-red-500"
-                : bin.filledPercentage > 60
+            className={`h-2 rounded-full ${bin.filledPercentage > 80
+              ? "bg-red-500"
+              : bin.filledPercentage > 60
                 ? "bg-yellow-500"
                 : "bg-green-500"
-            }`}
+              }`}
             style={{ width: `${bin.filledPercentage}%` }}
           ></div>
         </div>
@@ -143,5 +143,3 @@ export default function SmartBinItem({
     </div>
   );
 }
-
-

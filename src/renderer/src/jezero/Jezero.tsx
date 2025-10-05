@@ -11,6 +11,12 @@ export default function Jezero(): React.ReactElement {
   const navigate = useNavigate();
   
   const defaultInformation = <div>
+    <button
+      onClick={() => navigate("/recyclestation")}
+      className="mb-3 px-6 py-3 bg-blue-600 hover:bg-green-500 text-white font-semibold rounded-lg shadow-lg transition-colors"
+    >
+      🗑️ Recycle Station
+    </button>
     <pre className="mb-2">
       <p>Place: Jazero Crater</p>
       <p>Planet: Mars</p>
@@ -91,22 +97,34 @@ export default function Jezero(): React.ReactElement {
           className="h-full absolute right-16 drop-shadow-2xl"
         />
         {Object.entries(moduleInfo).map(([key, module]) => (
-          <HabitatModuleSelecter
-            key={key}
-            {...module.coords}
-            onClick={module.onClick}
-            onHover={() =>
-              setMainInformation(
-                <div>
-                  <pre className="mb-2">
-                    <p>Module: {module.title}</p>
-                  </pre>
-                  <p>{module.description}</p>
-                </div>
-              )
-            }
-            onLeave={() => setMainInformation(defaultInformation)}
-          />
+          <div key={key}>
+            
+            {/*Module name tag*/}
+            <div 
+              className="absolute bg-gray-800 text-white text-xs px-2 py-1 rounded shadow"
+              style={{ top: module.coords.top - 20, right: module.coords.right - 40 }}
+            >
+              {module.title}
+            </div>
+            
+            {/*Slecter ring*/}
+            <HabitatModuleSelecter
+              {...module.coords}
+              onClick={module.onClick}
+              onHover={() =>
+                setMainInformation(
+                  <div>
+                    <pre className="mb-2">
+                      <p>Module: {module.title}</p>
+                    </pre>
+                    <p>{module.description}</p>
+                  </div>
+                )
+              }
+              onLeave={() => setMainInformation(defaultInformation)}
+            />
+            
+          </div>
         ))}      
         
       </div>

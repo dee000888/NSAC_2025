@@ -8,11 +8,11 @@ interface ConsumableItemsPopupProps {
   binId: string;
 }
 
-export default function ConsumableItemsPopup({ 
-  isOpen, 
-  onClose, 
+export default function ConsumableItemsPopup({
+  isOpen,
+  onClose,
   onSelectItem,
-  binId 
+  binId
 }: ConsumableItemsPopupProps): React.ReactElement {
   const [items, setItems] = useState<ConsumableItemSchema[]>([]);
   const [loading, setLoading] = useState(false);
@@ -87,31 +87,29 @@ export default function ConsumableItemsPopup({
               {items.map((item) => {
                 const weightPerItem = item.quantity > 0 ? (item.weight_kg / item.quantity).toFixed(3) : 0;
                 const isOutOfStock = item.quantity <= 0;
-                
+
                 return (
                   <div
                     key={item.codeName}
-                    className={`bg-gray-700 p-4 rounded-lg cursor-pointer transition-all ${
-                      isOutOfStock 
-                        ? 'opacity-50 cursor-not-allowed' 
+                    className={`bg-gray-700 p-4 rounded-lg cursor-pointer transition-all ${isOutOfStock
+                        ? 'opacity-50 cursor-not-allowed'
                         : 'hover:bg-gray-600 hover:scale-105'
-                    }`}
+                      }`}
                     onClick={() => !isOutOfStock && handleItemSelect(item)}
                   >
                     <div className="flex justify-between items-start mb-2">
                       <h3 className="font-semibold text-lg">{item.name}</h3>
-                      <span className={`text-xs px-2 py-1 rounded ${
-                        item.category === 'FABRIC' ? 'bg-blue-600' :
-                        item.category === 'POLYMER' ? 'bg-purple-600' :
-                        item.category === 'GLASS' ? 'bg-green-600' :
-                        item.category === 'METAL' ? 'bg-yellow-600' :
-                        item.category === 'PAPER' ? 'bg-blue-500' :
-                        'bg-gray-600'
-                      }`}>
+                      <span className={`text-xs px-2 py-1 rounded ${item.category === 'FABRIC' ? 'bg-blue-600' :
+                          item.category === 'POLYMER' ? 'bg-purple-600' :
+                            item.category === 'GLASS' ? 'bg-green-600' :
+                              item.category === 'METAL' ? 'bg-yellow-600' :
+                                item.category === 'PAPER' ? 'bg-blue-500' :
+                                  'bg-gray-600'
+                        }`}>
                         {item.category}
                       </span>
                     </div>
-                    
+
                     <div className="text-sm text-gray-300 mb-2">
                       <div>Code: {item.codeName}</div>
                       <div>Available: {item.quantity} units</div>

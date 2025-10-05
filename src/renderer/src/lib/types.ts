@@ -16,7 +16,6 @@ export type SmartBinSchema = {
   binId: string;
   moduleName: HabitatModuleEnum;
   mobility: BinMobilityEnum;
-  filledPercentage: number;
 }
 
 export enum TrashCategoryEnum {
@@ -32,7 +31,7 @@ export type TrashItemSchema = {
   trashId: string;
   binId: string;
   codeName: string;
-  weight: number;
+  quantity: number;
 }
 
 
@@ -42,14 +41,14 @@ export type TrashItemSchema = {
 export type MonthlySummery = {
   month: string;
   year: number;
-  
+
   totalFabricCollected: number;
   totalPlasticCollected: number;
   totalGlassCollected: number;
   totalMetalCollected: number;
   totalPaperCollected: number;
   totalCompositeCollected: number;
-  
+
   totalFabricRecycled: number;
   totalPlasticRecycled: number;
   totalGlassRecycled: number;
@@ -80,7 +79,7 @@ export enum ItemCategoryEnum {
 }
 
 export type ConsumableItemSchema = {
-  name: string; 
+  name: string;
   codeName: string;
   category: ItemCategoryEnum;
   quantity: number;

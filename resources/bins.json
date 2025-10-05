@@ -1,0 +1,67 @@
+[
+  {
+    "binId": "bin_1",
+    "moduleName": "LivingSpaceModule",
+    "mobility": "INDOOR"
+  },
+  {
+    "binId": "bin_2",
+    "moduleName": "StorageModule",
+    "mobility": "INDOOR"
+  },
+  {
+    "binId": "bin_3",
+    "moduleName": "StorageModule",
+    "mobility": "INDOOR"
+  },
+  {
+    "binId": "bin_4",
+    "moduleName": "SurgicalModule",
+    "mobility": "INDOOR"
+  },
+  {
+    "binId": "bin_5",
+    "moduleName": "SurgicalModule",
+    "mobility": "INDOOR"
+  },
+  {
+    "binId": "bin_6",
+    "moduleName": "RecyclingModule",
+    "mobility": "INDOOR"
+  },
+  {
+    "binId": "bin_7",
+    "moduleName": "LivingSpaceModule",
+    "mobility": "INDOOR"
+  },
+  {
+    "binId": "bin_8",
+    "moduleName": "PlantationModule",
+    "mobility": "INDOOR"
+  },
+  {
+    "binId": "bin_9",
+    "moduleName": "LabModule",
+    "mobility": "INDOOR"
+  },
+  {
+    "binId": "bin_10",
+    "moduleName": "RecyclingModule",
+    "mobility": "INDOOR"
+  },
+  {
+    "binId": "bin_11",
+    "moduleName": "RecyclingModule",
+    "mobility": "INDOOR"
+  },
+  {
+    "binId": "bin_12",
+    "moduleName": "RecyclingModule",
+    "mobility": "INDOOR"
+  },
+  {
+    "binId": "bin_13",
+    "moduleName": "RecyclingModule",
+    "mobility": "INSTATION"
+  }
+]

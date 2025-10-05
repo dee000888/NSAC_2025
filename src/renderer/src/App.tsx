@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { ResidenceContext } from "./contexts/ResidenceContext";
 import Jezero from "./jezero/Jezero";
 import HabitatModule from "./habitatModule/HabitatModule";
+import RecycleStation from "./recycleStation/recycleStation";
 
 export default function App(): React.JSX.Element {
   
@@ -12,9 +13,12 @@ export default function App(): React.JSX.Element {
     return <div>Loading...</div>;
   }
 
-  return <Routes>
+  return (
+    <Routes>
       <Route path="/" element={<Jezero />} />
       <Route path="/habitatmodule" element={<HabitatModule />} />
-  </Routes>;
+      <Route path="/recyclestation" element={<RecycleStation />} />
+    </Routes>
+  );
   
 }

@@ -2,7 +2,7 @@ import { ipcMain } from "electron";
 import { connectDB } from "./database"
 import { HabitatModuleEnum } from "../renderer/src/lib/types";
 
-type DbCollections = "smartbin" | "trashitem" | "consumableitem";
+type DbCollections = "smartbin" | "trashitem" | "consumableitem" | "manufacturableitem";
 
 export default function registerDbHandlers() {
   
@@ -13,18 +13,27 @@ export default function registerDbHandlers() {
         { moduleName: moduleName },
         { projection: { _id: 0 } }
       ).toArray();
-    return smartBins;
+    const trashItems = await db.collection("trashitem" as DbCollections)
+      .find({})
+      .toArray();
+    
+    let updatedBins = smartBins.map((bin) => {
+      const filledPercentage = trashItems.filter((item) => item.binId === bin.binId).length;
+      return { ...bin, filledPercentage };
+    });
+    
+    return updatedBins;
   });
 
   ipcMain.handle("getTrashItems", async (_event, binId) => {
     const db = await connectDB();
-    const trashItem = await db.collection("trashitem" as DbCollections)
+    const trashItems = await db.collection("trashitem" as DbCollections)
       .find(
         { binId: binId },
         { projection: { _id: 0 } }
       )
       .toArray();
-    return trashItem;
+    return trashItems;
   });
 
   ipcMain.handle("assignBinToModule", async (_event, { binId, moduleName }) => {
@@ -47,8 +56,21 @@ export default function registerDbHandlers() {
 
   ipcMain.handle("convertConsumableToTrash", async (_event, { consumableItem, binId }) => {
     const db = await connectDB();
-    // Calculate the weight of one item
-    const weightPerItem = consumableItem.weight_kg / consumableItem.quantity;
+    
+    // No out of stock
+    if (consumableItem.quantity <= 0) {
+      return { success: false, data: "Out of stock" };
+    }
+    
+    // Find existing trash items of the same type
+    const existingTrash = await db.collection("trashitem").findOne({ codeName: consumableItem.codeName });
+    
+    if (existingTrash) {
+      await db.collection("trashitem").updateOne(
+        { codeName: consumableItem.codeName }, 
+        { $set: { quantity: existingTrash.quantity + 1 } });
+      return { success: true, data: "Updated" };
+    }
 
     // Create trash item
     const trashId = `TRASH-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
@@ -56,41 +78,19 @@ export default function registerDbHandlers() {
       trashId: trashId,
       binId: binId,
       codeName: consumableItem.codeName,
-      weight: weightPerItem
+      quantity: 1,
     };
 
     // Insert trash item
     await db.collection("trashitem").insertOne(trashItem);
 
-    // Update consumable item quantity (decrement by 1) and adjust total weight
-    const newQuantity = consumableItem.quantity - 1;
-    const newWeight = consumableItem.weight_kg - weightPerItem;
-
     // Find and update the consumable item
     await db.collection("consumableitem").updateOne(
       { codeName: consumableItem.codeName }, 
-      { 
-        $set: { 
-          quantity: newQuantity,
-          weight_kg: newWeight
-        }
-        }
-      );
+      { $set: { quantity: consumableItem.quantity - 1 } });
 
-    const tempBin = await db.collection("smartbin").findOne({binId: binId})
-
-    if (tempBin) {
-    await db.collection("smartbin").updateOne(
-      { binId: binId }, 
-      { 
-        $set: { 
-          filledPercentage: tempBin?.filledPercentage + 1
-        }
-        }
-      );
-    }
-
-    return { success: true, trashItem };
+    return { success: true, data: "Updated" };
+    
   });
 
   ipcMain.handle("getBinCountByModule", async (_event, moduleName) => {
@@ -109,7 +109,7 @@ export default function registerDbHandlers() {
     // Get all trash items in these bins
     const trashItems = await db.collection("trashitem").find({ binId: { $in: binIds } }).toArray();
     
-    // Get consumable items to map codeNames to categories
+    // Lookup table: Get consumable items to map codeNames to categories
     const consumableItems = await db.collection("consumableitem").find({}).toArray();
     const codeNameToCategory = new Map();
     consumableItems.forEach(item => {
@@ -127,8 +127,8 @@ export default function registerDbHandlers() {
     };
     
     trashItems.forEach(item => {
-      const category = codeNameToCategory.get(item.codeName) || 'UNKNOWN';
-      if (categoryWeights.hasOwnProperty(category)) {
+      const category = codeNameToCategory.get(item.codeName);
+      if (category && categoryWeights.hasOwnProperty(category)) {
         categoryWeights[category] += item.weight;
       }
     });
@@ -136,7 +136,7 @@ export default function registerDbHandlers() {
     return {
       binCount: bins.length,
       totalItems: trashItems.length,
-      totalWeight: trashItems.reduce((sum, item) => sum + item.weight, 0),
+      totalWeight: trashItems.reduce((sum, item) => sum + item.weight, 0).toFixed(3),
       categoryWeights
     };
   });
@@ -191,6 +191,14 @@ export default function registerDbHandlers() {
       movedCount: result.modifiedCount,
       instationBinId: instationBin.binId
     };
+  });
+
+  ipcMain.handle("getManufacturableItems", async (_event) => {
+    const db = await connectDB();
+    const manufacturableItems = await db.collection("manufacturableitem" as DbCollections)
+      .find({}, { projection: { _id: 0 } })
+      .toArray();
+    return manufacturableItems;
   });
   
 }
