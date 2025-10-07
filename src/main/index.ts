@@ -101,7 +101,7 @@ async function initializeCollectionsWithData(): Promise<void> {
 
       try {
         // Read manufacturableItems.json from resources folder
-        const resourcePath = path.join(__dirname, '../../resources/manufacturableItems.json');
+        const resourcePath = path.join(__dirname, '../../resources/manufacturableItem.json');
         const data = fs.readFileSync(resourcePath, 'utf8');
         const items = JSON.parse(data);
 
@@ -166,7 +166,7 @@ async function initializeCollectionsWithData(): Promise<void> {
 
       try {
         // Read consumableitems.json from resources folder
-        const resourcePath = path.join(__dirname, '../../resources/consumableitems.json');
+        const resourcePath = path.join(__dirname, '../../resources/consumableitem.json');
         const data = fs.readFileSync(resourcePath, 'utf8');
         const items = JSON.parse(data);
 
@@ -219,7 +219,7 @@ async function initializeCollectionsWithData(): Promise<void> {
 
       try {
         // Read smartbins.json from resources folder
-        const resourcePath = path.join(__dirname, '../../resources/smartbins.json');
+        const resourcePath = path.join(__dirname, '../../resources/smartbin.json');
         const data = fs.readFileSync(resourcePath, 'utf8');
         const bins = JSON.parse(data);
 
