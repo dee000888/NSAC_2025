@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
-import moduleImage from "../assets/images/(modules)/circular-module_1-Photoroom.png";
 import { SmartBinSchema, ConsumableItemSchema } from "@renderer/lib/types";
 import SmartBinItem from "./SmartBinItem";
 import BinDetails from "./BinDetails";
 import ModuleStatistics from "./ModuleStatistics";
 import { useLocation, useNavigate } from "react-router-dom";
+import surgicalModuleImage from "../assets/images/(modules)/SurgicalModule.png";
+import recyclingModuleImage from "../assets/images/(modules)/RecyclingModule.png";
+import labModuleImage from "../assets/images/(modules)/LabModule.png";
+import plantationModuleImage from "../assets/images/(modules)/PlantationModule.png";
+import livingSpaceModuleImage from "../assets/images/(modules)/LivingSpaceModule.png";
+import storageModuleImage from "../assets/images/(modules)/StorageModule.png";
 
 export default function HabitatModule(): React.ReactElement {
 
@@ -16,6 +21,8 @@ export default function HabitatModule(): React.ReactElement {
   const [smartBins, setSmartBins] = useState<(SmartBinSchema & { filledPercentage: number })[]>([]);
   const [consumableItems, setConsumableItems] = useState<ConsumableItemSchema[]>([]);
   const [selectedBinId, setSelectedBinId] = useState<string | null>(null);
+  
+  const [moduleImage, setModuleImage] = useState<string | null | undefined>(null);
 
   async function getBinData() {
     try {
@@ -58,9 +65,32 @@ export default function HabitatModule(): React.ReactElement {
   const handleConsumableItemsUpdated = async () => {
     await getConsumableItems();
   };
+  
+  function getModuleImage(moduleName: string) {
+    switch (moduleName) {
+      case "LabModule":
+        return labModuleImage;
+      case "PlantationModule":
+        return plantationModuleImage;
+      case "LivingSpaceModule":
+        return livingSpaceModuleImage;
+      case "StorageModule":
+        return storageModuleImage;
+      case "RecyclingModule":
+        return recyclingModuleImage;
+      case "SurgicalModule":
+        return surgicalModuleImage;
+      case "":
+        return "";
+    }
+  }
+  
+  useEffect(() => {
+    setModuleImage(getModuleImage(moduleName));
+  }, [moduleName]);
 
   return (
-    <div className="w-full min-h-screen bg-red-900 flex relative p-8 gap-2">
+    <div className="w-full min-h-screen bg-orange-600 flex relative p-8 gap-2">
 
       {/* Module Info */}
       <div className="w-1/3  bg-gray-800 text-white p-6 flex flex-col rounded-md">
@@ -79,7 +109,7 @@ export default function HabitatModule(): React.ReactElement {
         {/* Module Image */}
         <div className="mb-6">
           <img
-            src={moduleImage}
+            src={moduleImage || ""}
             alt={moduleName}
             className="w-36 h-36 object-contain bg-gray-700 rounded-lg p-2"
           />

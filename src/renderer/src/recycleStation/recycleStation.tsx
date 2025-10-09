@@ -133,6 +133,8 @@ export default function RecycleStation(): React.ReactElement {
         availableMaterialsData["NYLON"] = 1.5;
         availableMaterialsData["CARBON"] = 0.9;
       }
+      // Mars Regolith is always available in unlimited supply
+      availableMaterialsData["MARS_REGOLITH"] = Infinity;
 
       console.log("Manufacturable items:", manufacturableItemsData);
       setManufacturableItems(manufacturableItemsData);
@@ -216,6 +218,13 @@ export default function RecycleStation(): React.ReactElement {
       Object.entries(requiredMaterials).forEach(([material, requiredWeight]) => {
         // Convert requiredWeight to number if it's not already
         const required = typeof requiredWeight === 'number' ? requiredWeight : Number(requiredWeight);
+
+        // Special handling for Mars Regolith - always available in unlimited quantity
+        if (material === 'MARS_REGOLITH') {
+          availableMaterialsForItem[material] = Infinity;
+          return; // Skip further calculations for Mars Regolith
+        }
+
         const available = availableMaterials[material] || 0;
         availableMaterialsForItem[material] = available;
 

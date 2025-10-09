@@ -75,7 +75,7 @@ export default function SmartBinItem(props: SmartBinProps): React.ReactElement {
 
   return (
     <div
-      className={`${cardClass} rounded-lg p-4 text-white relative shadow-lg border border-gray-600 ${isHovered ? 'scale-105' : ''} transition-all duration-200`}
+      className={`${cardClass} rounded-lg p-4 text-white relative shadow-lg border border-gray-600 ${isHovered && !isAssignOpen ? 'scale-105' : ''} transition-all duration-200`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -131,8 +131,8 @@ export default function SmartBinItem(props: SmartBinProps): React.ReactElement {
       </button>
 
       {isAssignOpen && (
-        <div className="w-64 z-100 absolute inset-0 bg-black/80 flex items-center justify-center p-4 z-10 rounded-lg backdrop-blur-sm">
-          <div className="bg-gray-800 w-full max-w-sm rounded-lg p-6 border border-blue-500/50 shadow-lg">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+          <div className="bg-gray-800 w-96 rounded-lg p-6 border border-blue-500/50 shadow-lg">
             <div className="text-white font-semibold text-lg mb-2">Assign to Module</div>
             <div className="flex items-center space-x-2 text-xs text-gray-300 mb-4 pb-2 border-b border-gray-700">
               <span className="bg-blue-600 rounded-full w-5 h-5 flex items-center justify-center">🗑️</span>
@@ -177,7 +177,7 @@ export default function SmartBinItem(props: SmartBinProps): React.ReactElement {
 
       {/* Indication when bin is being dumped */}
       {isDumping && (
-        <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center rounded-lg backdrop-blur-sm">
+        <div className="fixed inset-0 bg-black/60 flex flex-col items-center justify-center rounded-lg backdrop-blur-sm z-50">
           <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-2"></div>
           <div className="text-sm text-white">Dumping trash...</div>
         </div>
