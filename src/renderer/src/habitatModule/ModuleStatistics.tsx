@@ -137,7 +137,7 @@ export default function ModuleStatistics({ moduleName }: { moduleName: HabitatMo
                   <div className="w-full bg-gray-600 rounded-full h-2">
                     <div
                       className={`h-2 rounded-full ${category.color}`}
-                      style={{ width: `${(category.weight / totalWeight) * 100}%` }}
+                      style={{ width: `${totalWeight > 0 ? ((category.weight / totalWeight) * 100) : 0}%` }}
                     ></div>
                   </div>
                 </div>

@@ -47,7 +47,7 @@ export default function BinStatusOverview({ className = "" }: BinStatusProps): R
   const needsAttention = Object.values(binStatus).filter(bin => bin.fullnessPercentage > 75).length;
 
   return (
-    <div className={`bg-gray-800 bg-opacity-85 text-white rounded-lg shadow-lg ${className}`}>
+    <div className={`bg-gray-800 bg-opacity-85 text-white rounded-lg shadow-lg w-80 ${className}`}>
       <div
         className="p-3 cursor-pointer flex justify-between items-center border-b border-gray-700"
         onClick={() => setExpanded(!expanded)}

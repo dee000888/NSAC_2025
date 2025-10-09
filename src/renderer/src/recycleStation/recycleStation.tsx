@@ -1062,8 +1062,6 @@ export default function RecycleStation(): React.ReactElement {
                 </div>
               </div>
             )}
-
-
           </>
         )}
       </div>
