@@ -22,7 +22,7 @@ export default function HabitatModule(): React.ReactElement {
   const [consumableItems, setConsumableItems] = useState<ConsumableItemSchema[]>([]);
   const [selectedBinId, setSelectedBinId] = useState<string | null>(null);
   
-  const [moduleImage, setModuleImage] = useState<string | null | undefined>(null);
+  const [moduleImage, setModuleImage] = useState<string | null>(null);
 
   async function getBinData() {
     try {
@@ -80,7 +80,7 @@ export default function HabitatModule(): React.ReactElement {
         return recyclingModuleImage;
       case "SurgicalModule":
         return surgicalModuleImage;
-      case "":
+      default:
         return "";
     }
   }
